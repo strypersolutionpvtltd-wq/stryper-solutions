@@ -8,7 +8,7 @@ import Logo from '@/components/shared/Logo';
 import AuthModal from '@/components/auth/AuthModal';
 
 /**
- * Navbar — ShaleenJobs style:
+ * Navbar :
  * 1. Top info bar (phone, email, socials)
  * 2. White main navbar with logo + nav + CTA
  */
@@ -81,8 +81,8 @@ const Navbar = () => {
           animate={{ y: 0, opacity: 1 }}
           transition={{ duration: 0.4, ease: 'easeOut' }}
           className={[
-            'bg-white transition-shadow duration-300',
-            isScrolled ? 'shadow-[0_2px_16px_-2px_rgba(0,0,0,0.12)]' : 'border-b border-neutral-100',
+            'bg-black transition-shadow duration-300',
+            isScrolled ? 'shadow-[0_2px_16px_-2px_rgba(0,0,0,0.12)]' : 'border-b border-white-10',
           ].join(' ')}
           role="banner"
         >
@@ -97,15 +97,16 @@ const Navbar = () => {
 
               <div className="flex items-center gap-3">
                 <motion.div className="hidden lg:block" whileHover={{ scale: 1.02 }} whileTap={{ scale: 0.97 }}>
-                  <Link to="/contact"
+                  <button
+                    onClick={openSignIn}
                     className="inline-flex items-center gap-2 px-5 py-2.5 rounded-lg text-sm font-semibold text-white transition-colors duration-200"
                     style={{ background: '#8B3A8F' }}>
-                    Get Consultation
-                  </Link>
+                    Company Login
+                  </button>
                 </motion.div>
 
                 <button
-                  className="lg:hidden w-10 h-10 rounded-lg flex items-center justify-center text-neutral-700 hover:bg-neutral-100 transition-colors"
+                  className="lg:hidden w-10 h-10 rounded-lg flex items-center justify-center text-white  hover:bg-white-10 transition-colors"
                   onClick={() => setMobileOpen(p => !p)}
                   aria-label={isMobileOpen ? 'Close menu' : 'Open menu'}
                   aria-expanded={isMobileOpen}

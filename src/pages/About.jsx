@@ -12,18 +12,16 @@ function CommitmentIcon() { return (<svg width="20" height="20" viewBox="0 0 20 
 function ExcellenceIcon() { return (<svg width="20" height="20" viewBox="0 0 20 20" fill="none"><path d="M10 2l2 4 4.5.7-3.25 3.15.77 4.5L10 12.2l-4.02 2.15.77-4.5L3.5 6.7 8 6 10 2z" stroke="currentColor" strokeWidth="1.5" strokeLinejoin="round"/></svg>); }
 
 const VALUES = [
-  { icon: <IntegrityIcon />,   title: 'Integrity',   desc: 'Honest, transparent dealings with every client, worker, and partner — always.' },
-  { icon: <ReliabilityIcon />, title: 'Reliability',  desc: 'Consistent delivery, on-time deployment, and dependable workforce support.' },
-  { icon: <CommitmentIcon />,  title: 'Commitment',   desc: 'Dedicated to long-term client success, not just short-term placements.' },
-  { icon: <ExcellenceIcon />,  title: 'Excellence',   desc: 'Continuous improvement in service quality, compliance, and workforce standards.' },
+  { icon: <IntegrityIcon />,  title: 'Integrity',   desc: 'Always honest, always transparent.' },
+  { icon: <ReliabilityIcon />, title: 'Reliability',  desc: 'Consistent delivery and dependable support.' },
+  { icon: <CommitmentIcon />,  title: 'Commitment',   desc: 'Dedicated to long-term client success.' },
+  { icon: <ExcellenceIcon />,  title: 'Excellence',   desc: 'Continuous service quality improvement.' },
 ];
 
 const MISSION_POINTS = [
-  'Deliver high-quality workforce solutions',
-  'Build long-term client relationships',
-  'Maintain operational excellence',
-  'Ensure compliance and workforce safety',
-  'Provide scalable staffing support',
+  'Deliver quality workforce solutions.',
+  'Develop long term client relationships.',
+  'Maintain operational excellence and safety.',
 ];
 
 const About = () => (
@@ -56,13 +54,10 @@ const About = () => (
               <span className="text-brand-purple-600">Workforce Solutions</span>{' '}Company
             </motion.h2>
             <motion.p variants={fadeInUp} className="text-neutral-500 text-[1.05rem] leading-relaxed mb-5">
-              Stryper Solution Pvt. Ltd. is a professionally managed workforce and operational solutions company dedicated to helping businesses achieve efficiency, productivity, and sustainable growth through reliable manpower support services.
-            </motion.p>
-            <motion.p variants={fadeInUp} className="text-neutral-500 text-[1.05rem] leading-relaxed mb-5">
-              We specialize in industrial manpower, warehouse staffing, facility management, payroll support, and workforce operations tailored to modern business environments.
+              Stryper Solution Pvt. Ltd. is a professionally managed manpower service company that helps businesses to achieve efficiency and sustainable growth by providing reliable manpower services.
             </motion.p>
             <motion.p variants={fadeInUp} className="text-neutral-500 text-[1.05rem] leading-relaxed mb-8">
-              Our company focuses on delivering structured staffing solutions and operational excellence that help organizations streamline workforce management while maintaining compliance, safety, and productivity standards. With a client-centric approach and commitment to service quality, Stryper Solution Pvt. Ltd. continues to build long-term partnerships across multiple industries.
+              Our expertise lies in industrial manpower, warehousing staffing, facility management and custom payroll support.
             </motion.p>
             <motion.div variants={fadeInUp}>
               <Link to="/contact" className="inline-flex items-center gap-2.5 px-7 py-3.5 rounded-xl bg-brand-purple-600 text-white text-sm font-semibold shadow-purple hover:bg-brand-purple-700 transition-all duration-250">
@@ -166,7 +161,7 @@ const VisionMission = () => (
           </div>
           <h3 id="vision-heading" className="font-display font-bold text-neutral-900 text-xl mb-3">Our Vision</h3>
           <p className="text-neutral-500 leading-relaxed text-[1.02rem]">
-            To become a trusted and leading workforce solutions provider delivering reliable manpower and operational support services across industries.
+            Our Vision is to be a trusted, leading provider of workforces providing reliable operational support across the industries.
           </p>
         </motion.div>
 
@@ -176,7 +171,7 @@ const VisionMission = () => (
           <div className="w-12 h-12 rounded-2xl bg-brand-gold-50 flex items-center justify-center text-brand-gold-600 mb-5">
             <svg width="22" height="22" viewBox="0 0 22 22" fill="none" aria-hidden="true"><path d="M11 2l2.5 5 5.5.8-4 3.9 1 5.5L11 14.5l-5 2.7 1-5.5L3 7.8l5.5-.8L11 2z" stroke="currentColor" strokeWidth="1.6" strokeLinejoin="round"/></svg>
           </div>
-          <h3 className="font-display font-bold text-neutral-900 text-xl mb-4">Our Mission</h3>
+          <h3 className="font-display font-bold text-neutral-900 text-xl mb-4">Our Mission Is:</h3>
           <ul className="space-y-2.5" role="list">
             {MISSION_POINTS.map((pt) => (
               <li key={pt} className="flex items-start gap-3">
@@ -205,7 +200,7 @@ const CoreValues = () => (
         <motion.div variants={fadeInUp} className="mb-5">
           <span className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-brand-purple-50 border border-brand-purple-100 text-brand-purple-700 text-xs font-semibold tracking-wide uppercase">
             <span className="w-1.5 h-1.5 rounded-full bg-brand-purple-500" aria-hidden="true" />
-            Core Values
+            Core Principles
           </span>
         </motion.div>
         <motion.h2 id="values-heading" variants={fadeInUp} className="font-display font-bold text-neutral-900 leading-[1.1] tracking-tight mb-4" style={{ fontSize: 'clamp(1.9rem,3.2vw,2.75rem)' }}>
@@ -259,7 +254,7 @@ const LeadershipMessage = () => (
 
         <motion.blockquote variants={fadeInUp}>
           <p id="leadership-heading" className="font-display font-medium text-white leading-relaxed text-balance mb-8" style={{ fontSize: 'clamp(1.15rem,2.2vw,1.45rem)' }}>
-            &quot;At Stryper Solution Pvt. Ltd., we believe that workforce strength is the foundation of every successful business. Our mission is to provide dependable staffing and operational support solutions that help organizations focus on growth while we manage workforce efficiency.&quot;
+            &quot;Workforce strength is the foundation of successful business. We provide dependable staffing solutions, helping organizations focus on growth while we manage efficiency.&quot;
           </p>
         </motion.blockquote>
 

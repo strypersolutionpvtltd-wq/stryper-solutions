@@ -1,17 +1,21 @@
 import { useState } from 'react';
 import { motion } from 'framer-motion';
 import GoogleIcon from './GoogleIcon';
+import { useAuth } from '@/context/AuthContext';
 
 const SignInForm = ({ onSwitchToSignUp, onClose }) => {
   const [form, setForm] = useState({ email: '', password: '' });
   const [showPass, setShowPass] = useState(false);
+  const { setIsLoggedIn, setUserRole } = useAuth();
 
   const handleChange = (e) => setForm(p => ({ ...p, [e.target.name]: e.target.value }));
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    // TODO: connect to backend
-    console.log('SignIn submit:', form);
+    // Set company role and mark as logged in — redirect handled by route guard
+    setIsLoggedIn(true);
+    setUserRole('company');
+    if (onClose) onClose();
   };
 
   return (

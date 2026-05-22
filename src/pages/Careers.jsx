@@ -14,7 +14,7 @@ function Chk() {
 
 const JOBS = [
   { id:1, title:'Business Development Executive (BDE)', location:'Gurugram, HR', type:'Full-Time', exp:'1-3 yrs', desc:'Drive business growth by identifying new clients, building relationships, and pitching Stryper staffing solutions. Walk-in interviews at Sector 62, Gurugram.' },
-  { id:2, title:'Admin Executive',                      location:'Jaipur, RJ',   type:'Full-Time', exp:'1-2 yrs', desc:'Handle office tasks, manage phone calls & emails, coordinate meetings, maintain office supplies, and support management with administrative tasks.' },
+  { id:2, title:'Admin Executive',                     location:'Jaipur, RJ',   type:'Full-Time', exp:'1-2 yrs', desc:'Handle office tasks, manage phone calls & emails, coordinate meetings, maintain office supplies, and support management with administrative tasks.' },
   { id:3, title:'Client Handling Executive',            location:'Pune, MH',     type:'Full-Time', exp:'0-1 yr',  desc:'Freshers welcome. Communicate with clients, manage queries via email/phone/chat, maintain client relationships, and ensure timely service delivery.' },
   { id:4, title:'Guest Handling Executive',             location:'Lucknow / Pune / Jaipur', type:'Full-Time', exp:'0-2 yrs', desc:'Greet and welcome guests professionally, handle inquiries, assist with check-in/check-out, manage reservations, and maintain a customer-focused attitude.' },
   { id:5, title:'Multi-Skilled Technician',             location:'Lucknow / Pune', type:'Full-Time', exp:'1-3 yrs', desc:'Perform maintenance, repair & installation tasks. Troubleshoot electrical, plumbing, HVAC, and mechanical systems. Read technical manuals and blueprints.' },
@@ -22,19 +22,19 @@ const JOBS = [
 ];
 
 const WHY = [
-  { title:'Career Growth Opportunities', desc:'Structured career paths with regular performance reviews and promotion opportunities.', a:'p' },
-  { title:'Safe Work Environment',       desc:'Strict safety protocols and compliance standards across all client sites.',            a:'g' },
-  { title:'Professional Training',       desc:'On-the-job training, skill development programs, and certification support.',         a:'p' },
-  { title:'Timely Salary Support',       desc:'Guaranteed on-time salary disbursement with full statutory benefits.',               a:'g' },
-  { title:'Long-Term Stability',         desc:'Consistent work engagements with reputed clients across multiple industries.',        a:'p' },
-  { title:'Supportive Management',       desc:'Dedicated HR support and a responsive management team for every employee.',          a:'g' },
+  { title:'Opportunities for Career Advancement', desc:'Clear career paths and opportunities for promotion with regular performance reviews.', a:'p' },
+  { title:'Safety',                              desc:'Rigorous safety practices and compliance standards on all client sites.',                                  a:'g' },
+  { title:'Professional Training',               desc:'On job training, skill development programs and certification support.',                                 a:'p' },
+  { title:'Salary Support',                      desc:'On-time salary with full statutory benefits.',                                                              a:'g' },
+  { title:'Long Term Stability',                 desc:'Regular work assignment with reputed clients of various industries.',                                      a:'p' },
+  { title:'Supportive Management',               desc:'Each employee has access to dedicated HR support and responsive management.',                              a:'g' },
 ];
 
 const STEPS = [
-  { s:1, t:'Submit Application',       d:'Fill out our online form or drop your resume. We review every application personally.' },
-  { s:2, t:'Profile Review',           d:'Our HR team reviews your profile and skill set to match you with the right opportunity.' },
-  { s:3, t:'Interview & Verification', d:'A brief interview and document verification to confirm your eligibility and preferences.' },
-  { s:4, t:'Deployment & Onboarding',  d:'Once selected, we handle onboarding, documentation, and ensure a smooth first-day experience.' },
+  { s:1, t:'Apply Now',                d:'Complete our online form or upload your resume. We personally review every application.' },
+  { s:2, t:'Profile Review',           d:'Your profile and skill set are assessed by our HR team to find a match.' },
+  { s:3, t:'Interview & Verification', d:'A quick interview and document check to make sure you\'re eligible and that we have your preferences right.' },
+  { s:4, t:'Deployment & Onboarding',  d:'Once chosen, we take care of onboarding, documentation, and a seamless first day.' },
 ];
 
 const POS = ['Business Development Executive (BDE)','Admin Executive','Client Handling Executive','Guest Handling Executive','Multi-Skilled Technician','Factory Helper / Worker','Other'];
@@ -53,10 +53,10 @@ function CareersIntro() {
             <motion.h2 variants={fadeInUp} className="font-display font-bold text-neutral-900 leading-[1.1] tracking-tight mb-5" style={{fontSize:'clamp(1.8rem,3vw,2.5rem)'}}>
               A Workplace Built On <span style={{color:P}}>Trust &amp; Growth</span>
             </motion.h2>
-            <motion.p variants={fadeInUp} className="text-neutral-500 text-[1.02rem] leading-relaxed mb-5">At Stryper Solution Pvt. Ltd., we believe our people are our greatest asset. We create an environment where every team member is valued, supported, and given the tools to grow.</motion.p>
-            <motion.p variants={fadeInUp} className="text-neutral-500 text-[1.02rem] leading-relaxed mb-8">Whether you are starting your career or looking for a stable long-term opportunity, we offer structured roles, timely compensation, and a management team that genuinely cares about your professional journey.</motion.p>
+            <motion.p variants={fadeInUp} className="text-neutral-500 text-[1.02rem] leading-relaxed mb-5">At Stryper Solution Pvt. Ltd. we believe that our people are our biggest assets. We foster an environment where everyone on the team feels valued, supported and empowered to grow. Kickstart your career or secure a solid long-term position in one of our structured jobs with timely payment and management that genuinely cares about your professional journey.</motion.p>
+            <motion.p variants={fadeInUp} className="text-neutral-500 text-[1.02rem] leading-relaxed mb-8">We are not just a staffing company. We are a career partner dedicated to your long-term success. That means we’re hiring for a whole bunch of jobs.” Find the right opportunity and apply now.</motion.p>
             <motion.ul variants={staggerContainer(0.08,0.1)} className="space-y-3 mb-8" role="list">
-              {['Structured career paths with regular reviews','On-time salary with full statutory benefits','Training and skill development support','Dedicated HR team for every employee'].map(pt=>(
+              {['Defined career pathways and regular reviews.', 'Salary paid on time with all statutory benefits.', 'Training and skills development support.', 'Dedicated HR team for each employee.'].map(pt=>(
                 <motion.li key={pt} variants={fadeInUp} className="flex items-center gap-3">
                   <span className="w-5 h-5 rounded-full flex items-center justify-center shrink-0" style={{background:P+'15',color:P}}><Chk/></span>
                   <span className="text-sm text-neutral-700 font-medium">{pt}</span>
@@ -271,11 +271,11 @@ function ResumeSubmission() {
               </span>
             </motion.div>
             <motion.h2 variants={fadeInUp} className="font-display font-bold text-neutral-900 leading-[1.1] tracking-tight mb-5" style={{fontSize:'clamp(1.8rem,3vw,2.5rem)'}}>
-              Take the First Step Towards Your <span style={{color:P}}>Next Opportunity</span>
+              Create Your <span style={{color:P}}>Next Opportunity</span>
             </motion.h2>
-            <motion.p variants={fadeInUp} className="text-neutral-500 text-[1.02rem] leading-relaxed mb-8">Fill in your details and upload your resume. Our HR team reviews every application and will reach out within 48 hours if there is a match.</motion.p>
+            <motion.p variants={fadeInUp} className="text-neutral-500 text-[1.02rem] leading-relaxed mb-8">Fill in your information and attach your CV. Our HR team reviews every application and will contact you within 48 hours if you are a fit.</motion.p>
             <motion.ul variants={staggerContainer(0.08,0.1)} className="space-y-3" role="list">
-              {['Every application is personally reviewed','Response within 48 business hours','No application fee - ever','Your data is kept strictly confidential'].map(pt=>(
+              {['We personally review every application.', 'Reply within 48 business hours.', 'No application fee, ever.', 'Your information is kept strictly confidential.'].map(pt=>(
                 <motion.li key={pt} variants={fadeInUp} className="flex items-center gap-3">
                   <span className="w-5 h-5 rounded-full flex items-center justify-center shrink-0" style={{background:P+'15',color:P}}><Chk/></span>
                   <span className="text-sm text-neutral-700 font-medium">{pt}</span>
@@ -375,10 +375,9 @@ function CareersCTA() {
             </span>
           </motion.div>
           <motion.h2 variants={fadeInUp} className="font-display font-bold text-white leading-[1.08] tracking-tight mb-5 text-balance" style={{fontSize:'clamp(2rem,4vw,3.2rem)'}}>
-            Ready To Join Our{' '}
-            <span style={{background:`linear-gradient(90deg,${G},#fbbf24)`,WebkitBackgroundClip:'text',WebkitTextFillColor:'transparent',backgroundClip:'text'}}>Workforce Network?</span>
+            Ready to Enter Our <span style={{background:`linear-gradient(90deg,${G},#fbbf24)`,WebkitBackgroundClip:'text',WebkitTextFillColor:'transparent',backgroundClip:'text'}}>Workforce Network?</span>
           </motion.h2>
-          <motion.p variants={fadeInUp} className="text-white/65 text-lg leading-relaxed max-w-lg mx-auto mb-10">Take the first step towards a stable, rewarding career with one of India&apos;s growing workforce solutions companies.</motion.p>
+          <motion.p variants={fadeInUp} className="text-white/65 text-lg leading-relaxed max-w-lg mx-auto mb-10">Join one of India’s leading workforce solutions companies and step into a stable and rewarding career.</motion.p>
           <motion.div variants={fadeInUp} className="flex flex-wrap items-center justify-center gap-4">
             <motion.div whileHover={{scale:1.04}} whileTap={{scale:0.97}}>
               <a href="#apply" className="inline-flex items-center gap-2.5 px-8 py-4 rounded-xl text-white text-base font-semibold" style={{background:G,boxShadow:'0 4px 20px rgba(245,166,35,0.4)'}}>

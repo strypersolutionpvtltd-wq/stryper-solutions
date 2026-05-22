@@ -212,7 +212,7 @@ const Hero = () => {
     <div className="bg-white border-b border-neutral-100">
       <div className="container-base">
         <div className="grid grid-cols-1 md:grid-cols-2 divide-y md:divide-y-0 md:divide-x divide-neutral-100">
-          {/* Employer */}
+          {/* Company */}
           <motion.div
             initial={{ opacity: 0, y: 16 }}
             animate={{ opacity: 1, y: 0 }}
@@ -226,16 +226,15 @@ const Hero = () => {
               Looking for Workforce?
             </p>
             <h3 className="text-xl font-display font-bold text-neutral-900 mb-4">
-              I am an Employer
+              I am a Company
             </h3>
-            <Link
-              to="/contact"
-              onClick={handleHireClick}
+            <button
+              onClick={() => setAuthModal({ open: true, view: 'signin' })}
               className="inline-flex items-center gap-2 px-7 py-3 rounded-lg text-sm font-semibold text-white transition-colors duration-200"
               style={{ background: "#8B3A8F" }}
             >
-              Hire Workforce
-            </Link>
+              Company Login
+            </button>
           </motion.div>
 
           {/* Job Seeker */}

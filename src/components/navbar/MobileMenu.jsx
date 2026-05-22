@@ -124,21 +124,13 @@ const MobileMenu = ({ id, onClose, onSignIn, onSignUp }) => (
             Sign Up
           </button>
         </div>
-        <Link
-          to="/contact"
-          onClick={onClose}
-          className="flex items-center justify-center gap-2 w-full px-5 py-3.5 rounded-xl
-                     bg-brand-purple-600 text-white text-sm font-semibold
-                     hover:bg-brand-purple-700 transition-colors duration-200 shadow-purple"
+        <button
+          onClick={() => { onClose(); onSignIn(); }}
+          className="flex items-center justify-center gap-2 w-full px-5 py-3.5 rounded-xl text-white text-sm font-semibold transition-colors duration-200"
+          style={{ background: '#8B3A8F' }}
         >
-          Get Consultation
-          <svg width="14" height="14" viewBox="0 0 14 14" fill="none" aria-hidden="true">
-            <path d="M2.5 7h9M7.5 3l4 4-4 4" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
-          </svg>
-        </Link>
-        <p className="text-center text-xs text-neutral-400">
-          Free consultation · No commitment
-        </p>
+          Company Login
+        </button>
       </motion.div>
     </motion.div>
   </>

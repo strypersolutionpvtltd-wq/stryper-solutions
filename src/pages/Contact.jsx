@@ -38,7 +38,7 @@ const CONTACT_CARDS = [
     lines: [
       COMPANY_INFO.address.line1,
       `${COMPANY_INFO.address.city}, ${COMPANY_INFO.address.state}`,
-      `${COMPANY_INFO.address.country} — ${COMPANY_INFO.address.pin}`,
+      `${COMPANY_INFO.address.country} - ${COMPANY_INFO.address.pin}`,
     ],
     accent: PURPLE,
     action: null,
@@ -55,7 +55,7 @@ const CONTACT_CARDS = [
       </svg>
     ),
     title: "Phone Support",
-    lines: [COMPANY_INFO.phone, "Mon to Sat, 9:00 AM to 6:00 PM"],
+    lines: [COMPANY_INFO.phone, "Mon – Sat, 9:00AM – 6:00PM"],
     accent: GOLD,
     action: { label: "Call Now", href: `tel:${COMPANY_INFO.phone}` },
   },
@@ -80,7 +80,7 @@ const CONTACT_CARDS = [
       </svg>
     ),
     title: "Email Support",
-    lines: [COMPANY_INFO.email, "We reply within 24 hours"],
+    lines: [COMPANY_INFO.email, "We respond within 24 hours."],
     accent: PURPLE,
     action: { label: "Send Email", href: `mailto:${COMPANY_INFO.email}` },
   },
@@ -106,8 +106,8 @@ const CONTACT_CARDS = [
     title: "Working Hours",
     lines: [
       "Monday – Saturday",
-      "9:00 AM – 6:00 PM IST",
-      "Closed on Sundays & Public Holidays",
+      "9:00 AM to 6:00 PM IST",
+      "Closed Sundays & Public Holidays.",
     ],
     accent: GOLD,
     action: null,
@@ -117,22 +117,22 @@ const CONTACT_CARDS = [
 const SUPPORT_FEATURES = [
   {
     title: "Fast Workforce Deployment",
-    desc: "Requirement to deployment in 48–72 hours.",
+    desc: "48-72 hours from requirement to deployment.",
     accent: PURPLE,
   },
   {
-    title: "Dedicated Support Team",
-    desc: "Named account manager for every client engagement.",
+    title: "Named Account Manager",
+    desc: "Every client engagement will have a named account manager.",
     accent: GOLD,
   },
   {
-    title: "Compliance-Driven Operations",
-    desc: "Full PF, ESI, labour law compliance on every project.",
+    title: "Compliance-driven Operations",
+    desc: "Full PF, ESI, Labour law compliance on all the projects.",
     accent: PURPLE,
   },
   {
-    title: "Pan-India Service Coverage",
-    desc: "Operations across major industrial and commercial hubs.",
+    title: "Service Coverage Pan India",
+    desc: "Operations in all major Industrial & Commercial hubs.",
     accent: GOLD,
   },
 ];
@@ -150,15 +150,14 @@ const SERVICE_OPTIONS = [
 const Contact = () => (
   <>
     <PageHero
-      title="Let's Discuss Your Workforce Requirements"
-      subtitle="Connect with Stryper Solution Pvt. Ltd. for staffing solutions, workforce support, operational services, and business inquiries."
+      title="LET’S TALK ABOUT YOUR WORKFORCE NEEDS"
+      subtitle="Stryper Solution Pvt. Ltd. Contact us for staffing solutions, workforce support, operational services and business enquiries."
       breadcrumb="Contact"
     />
     <ContactInfoGrid />
     <ContactFormSection />
     <SupportFeatures />
     <FAQSection />
-    <SupportFeatures />
     <OfficeLocation />
     <ContactCTA />
   </>
@@ -309,16 +308,14 @@ const ContactFormSection = () => (
             className="font-display font-bold text-neutral-900 leading-[1.1] tracking-tight mb-5"
             style={{ fontSize: "clamp(1.8rem,3vw,2.5rem)" }}
           >
-            Tell Us About Your{" "}
-            <span style={{ color: PURPLE }}>Workforce Needs</span>
+            Tell us about your staffing needs.
           </motion.h2>
 
           <motion.p
             variants={fadeInUp}
             className="text-neutral-500 text-[1.02rem] leading-relaxed mb-8"
           >
-            Fill in the form and our team will get back to you within 24 hours
-            with a tailored workforce solution proposal.
+            Fill out the form and we will get back to you within 24 hours with a tailored workforce solution proposal.
           </motion.p>
 
           {/* Trust points */}
@@ -327,10 +324,10 @@ const ContactFormSection = () => (
             className="space-y-3.5"
           >
             {[
-              { text: "Free initial consultation — no commitment required" },
-              { text: "Dedicated account manager assigned to your inquiry" },
-              { text: "Proposal delivered within 24 business hours" },
-              { text: "Full confidentiality on all business information" },
+              { text: "Free initial consultation with no obligation." },
+              { text: "Dedicated account manager for your request." },
+              { text: "We will deliver the proposal within 24 business hours." },
+              { text: "Strictest confidentiality on all business information." },
             ].map((pt) => (
               <motion.div
                 key={pt.text}
@@ -364,7 +361,7 @@ const ContactFormSection = () => (
             className="mt-10 pt-8 border-t border-neutral-100 flex flex-col gap-3"
           >
             <p className="text-xs font-semibold text-neutral-400 uppercase tracking-widest mb-1">
-              Or reach us directly
+              Or contact us directly.
             </p>
             <a
               href={`tel:${COMPANY_INFO.phone}`}
@@ -472,11 +469,10 @@ const ContactForm = () => {
           </svg>
         </div>
         <h3 className="font-display font-bold text-neutral-900 text-xl mb-3">
-          Message Sent!
+          Thanks for reaching out.
         </h3>
         <p className="text-neutral-500 text-sm leading-relaxed mb-6">
-          Thank you for reaching out. Our team will review your inquiry and
-          respond within 24 business hours.
+          We will look into your inquiry and get back to you within 24 business hours.
         </p>
         <button
           onClick={() => setSubmitted(false)}
@@ -632,7 +628,7 @@ const ContactForm = () => {
           name="message"
           required
           rows={5}
-          placeholder="Describe your workforce requirements, number of workers needed, location, timeline..."
+          placeholder="What are your labour needs, how many workers do you need, where, when..."
           value={form.message}
           onChange={handleChange}
           onFocus={() => setFocused("message")}
@@ -664,8 +660,7 @@ const ContactForm = () => {
             strokeLinecap="round"
           />
         </svg>
-        Our team typically responds within 24 hours. Your information is kept
-        strictly confidential.
+        Our team typically respond within 24 hours. Your information is treated with strict confidentiality.
       </p>
 
       {/* Submit */}
@@ -766,7 +761,6 @@ const OfficeLocation = () => (
       background: "linear-gradient(180deg,#fafafa 0%,#fefeff 100%)",
     }}
   >
-    {/* Decorative Background Elements */}
     <div
       className="absolute top-0 left-0 w-full h-full pointer-events-none opacity-40"
       aria-hidden="true"
@@ -836,7 +830,7 @@ const OfficeLocation = () => (
                 </h4>
                 <p className="text-neutral-500 leading-relaxed">
                   {COMPANY_INFO.address.line1},<br />
-                  {COMPANY_INFO.address.city}, {COMPANY_INFO.address.state} —{" "}
+                  {COMPANY_INFO.address.city}, {COMPANY_INFO.address.state} - {" "}
                   {COMPANY_INFO.address.pin}
                 </p>
               </div>
@@ -874,7 +868,7 @@ const OfficeLocation = () => (
             {/* CTA Button */}
             <motion.div variants={fadeInUp} className="pt-4">
               <a
-                href="https://www.google.com/maps/dir/?api=1&destination=Pioneer+Urban+Square+Sector+62+Gurugram"// Change this to real link
+                href="https://www.google.com/maps/dir/?api=1&destination=Pioneer+Urban+Square+Sector+62+Gurugram"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="inline-flex items-center gap-2.5 px-7 py-3.5 rounded-xl text-white text-sm font-semibold transition-all duration-300 shadow-purple hover:translate-y-[-2px]"
@@ -909,9 +903,7 @@ const OfficeLocation = () => (
           viewport={viewportOnce}
         >
           <div className="relative group">
-            {/* Background Glow */}
             <div className="absolute -inset-4 bg-gradient-to-tr from-brand-purple-200 to-brand-gold-100 rounded-[3rem] blur-2xl opacity-30 group-hover:opacity-50 transition-opacity duration-500" />
-
             <div className="relative rounded-[2.5rem] overflow-hidden shadow-2xl border-[10px] border-white">
               <iframe
                 title="Stryper Solution Office Location"
@@ -982,7 +974,7 @@ const ContactCTA = () => (
               className="w-1.5 h-1.5 rounded-full animate-pulse"
               style={{ background: GOLD }}
             />
-            We&apos;re Ready to Help
+            We're Ready to Help
           </span>
         </motion.div>
 
@@ -1009,8 +1001,7 @@ const ContactCTA = () => (
           variants={fadeInUp}
           className="text-white/65 text-lg leading-relaxed max-w-lg mx-auto mb-10"
         >
-          Our team is available Monday to Saturday, 9 AM – 6 PM. Reach out and
-          we&apos;ll respond within 24 hours.
+          Our team is available Monday to Saturday, 9 AM – 6 PM. Reach out and we'll respond within 24 hours. Take the first step towards a stable, rewarding career with one of India's growing workforce solutions companies.
         </motion.p>
 
         <motion.div
@@ -1044,8 +1035,8 @@ const ContactCTA = () => (
             </a>
           </motion.div>
           <motion.div whileHover={{ scale: 1.04 }} whileTap={{ scale: 0.97 }}>
-            <Link
-              to="#form"
+            <a
+              href="#form-heading"
               className="inline-flex items-center gap-2.5 px-8 py-4 rounded-xl text-white text-base font-semibold border transition-colors duration-200"
               style={{
                 borderColor: "rgba(255,255,255,0.3)",
@@ -1053,7 +1044,7 @@ const ContactCTA = () => (
               }}
             >
               Send Inquiry
-            </Link>
+            </a>
           </motion.div>
         </motion.div>
       </motion.div>

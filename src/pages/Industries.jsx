@@ -21,22 +21,22 @@ function CheckIcon() { return (<svg width="12" height="12" viewBox="0 0 12 12" f
 
 /* ── Overview cards ── */
 const OVERVIEW = [
-  { id:"manufacturing",  title:"Manufacturing",          description:"Skilled operators, technicians, and line workers for production floors, assembly lines, and quality control.", accentColor:"purple", icon:<MfgIcon />   },
-  { id:"warehousing",    title:"Warehousing",            description:"Trained warehouse associates, supervisors, and inventory specialists for high-throughput storage operations.", accentColor:"gold",   icon:<WareIcon />  },
-  { id:"logistics",      title:"Logistics & Supply Chain",description:"Drivers, dispatchers, and supply chain coordinators keeping your freight and last-mile delivery on schedule.", accentColor:"purple", icon:<LogIcon />   },
-  { id:"corporate",      title:"Corporate Offices",      description:"Administrative, front-desk, IT support, and back-office professionals for modern corporate environments.",       accentColor:"gold",   icon:<CorpIcon />  },
-  { id:"industrial",     title:"Industrial Plants",      description:"Plant operators, safety officers, and maintenance crews for heavy industrial and process plant environments.",   accentColor:"purple", icon:<PlantIcon /> },
-  { id:"commercial",     title:"Commercial Facilities",  description:"Housekeeping, security, and facility management staff for malls, hospitals, hotels, and commercial complexes.", accentColor:"gold",   icon:<CommIcon />  },
+  { id:"manufacturing",  title:"Manufacturing",           description:"We offer skilled operators, technicians, and line workers for your factory floors, assembly lines, and quality control departments.", accentColor:"purple", icon:<MfgIcon />   },
+  { id:"warehousing",    title:"Warehousing",             description:"We provide trained warehouse staff, supervisors, and inventory specialists to manage busy storage operations.", accentColor:"gold",   icon:<WareIcon />  },
+  { id:"logistics",      title:"Logistics & Supply Chain",description:"We supply drivers, dispatchers, and supply chain coordinators to make sure your shipments and last-mile deliveries always arrive on time.", accentColor:"purple", icon:<LogIcon />   },
+  { id:"corporate",      title:"Corporate Offices",       description:"For corporate offices, we find people to handle administrative tasks, welcome visitors at the front desk, provide IT support, and manage back-office work, all ready for today's business settings.",        accentColor:"gold",   icon:<CorpIcon />  },
+  { id:"industrial",     title:"Industrial Plants",       description:"In industrial plants, we staff positions like plant operators, safety officers, and maintenance teams, especially for large factories and processing sites.",   accentColor:"purple", icon:<PlantIcon /> },
+  { id:"commercial",     title:"Commercial Facilities",   description:"And for commercial places such as malls, hospitals, hotels, or other big complexes, we supply staff for housekeeping, security, and managing the whole facility.", accentColor:"gold",   icon:<CommIcon />  },
 ];
 
 /* ── Detailed sections ── */
 const DETAILS = [
-  { id:"manufacturing",  eyebrow:"Manufacturing",          title:"Production-Ready Industrial Workforce",          description:"We supply trained, vetted workers for every layer of manufacturing operations - from shop floor to quality control. Our workforce is briefed on safety protocols, production SOPs, and shift-based scheduling.", features:["Production Workforce","Machine Operators","Skilled Technicians","Quality Inspection Teams","Shift-Based Staffing"],           stat1:{val:"300+",lbl:"Workers Deployed"}, stat2:{val:"15+",lbl:"Manufacturing Clients"}, accent:PURPLE, flip:false },
-  { id:"warehousing",    eyebrow:"Warehousing",            title:"Efficient Warehouse Operations Workforce",       description:"From inventory handling to dispatch support, we provide trained warehouse staff who understand modern WMS systems, safety standards, and high-throughput operational demands.", features:["Inventory Handling","Pick & Pack Operations","Warehouse Associates","Dispatch Support","Material Management"],                    stat1:{val:"150+",lbl:"Warehouse Staff"},   stat2:{val:"99%",lbl:"On-Time Deployment"}, accent:GOLD,   flip:true  },
-  { id:"logistics",      eyebrow:"Logistics & Supply Chain",title:"End-to-End Logistics Workforce Support",       description:"We staff logistics operations across the full supply chain - from loading docks to distribution hubs. Our workers are trained in safety, documentation, and operational efficiency.", features:["Logistics Workforce","Loading & Unloading Teams","Distribution Support","Transportation Coordination","Supply Chain Operations"], stat1:{val:"200+",lbl:"Logistics Workers"},  stat2:{val:"48hr",lbl:"Avg. Deployment"},   accent:PURPLE, flip:false },
-  { id:"corporate",      eyebrow:"Corporate Offices",      title:"Professional Corporate Support Workforce",      description:"We provide trained office support professionals for corporate environments - from front desk executives to back-office data entry operators - ensuring smooth day-to-day operations.", features:["Office Support Staff","Front Desk Executives","Data Entry Operators","Administrative Workforce","Back Office Support"],          stat1:{val:"100+",lbl:"Corporate Clients"}, stat2:{val:"24hr",lbl:"Response Time"},     accent:GOLD,   flip:true  },
-  { id:"industrial",     eyebrow:"Industrial Plants",      title:"Specialized Industrial Plant Workforce",        description:"Heavy industrial environments demand specialized, safety-conscious workers. We deploy plant operators, maintenance staff, and technical workforce trained for high-risk, high-output plant operations.", features:["Plant Operations Support","Maintenance Staff","Technical Workforce","Safety Compliance Teams","Production Support"],          stat1:{val:"80+",lbl:"Plant Clients"},      stat2:{val:"100%",lbl:"Safety Compliance"}, accent:PURPLE, flip:false },
-  { id:"commercial",     eyebrow:"Commercial Facilities",  title:"Complete Commercial Facility Management Staff", description:"We manage the full spectrum of commercial facility staffing - from daily housekeeping to technical maintenance - across malls, hospitals, hotels, and large commercial complexes.", features:["Housekeeping Teams","Facility Supervisors","Electrical & Plumbing Support","Cleaning Operations","Maintenance Services"],          stat1:{val:"60+",lbl:"Facility Sites"},     stat2:{val:"100%",lbl:"SLA Compliance"},    accent:GOLD,   flip:true  },
+  { id:"manufacturing",  eyebrow:"Manufacturing",          title:"Production-Ready Industrial Workforce",          description:"We provide trained and carefully checked workers for every part of manufacturing, from the actual shop floor all the way through to quality control. Our staff are well-versed in safety procedures, standard ways of doing things in production, and how shift schedules work.", features:["Production Workforce","Machine Operators","Skilled Technicians","Quality Inspection Teams","Shift-Based Staffing"],          stat1:{val:"300+",lbl:"Workers Deployed"}, stat2:{val:"15+",lbl:"Manufacturing Clients"}, accent:PURPLE, flip:false },
+  { id:"warehousing",    eyebrow:"Warehousing",            title:"Efficient Warehouse Operations Workforce",       description:"Whether it's managing inventory or helping with dispatch, we offer trained warehouse staff who really know modern WMS systems, safety rules, and the needs of busy operations.", features:["Inventory Handling","Pick & Pack Operations","Warehouse Associates","Dispatch Support","Material Management"],                    stat1:{val:"150+",lbl:"Warehouse Staff"},   stat2:{val:"99%",lbl:"On-Time Deployment"}, accent:GOLD,   flip:true  },
+  { id:"logistics",      eyebrow:"Logistics & Supply Chain",title:"End-to-End Logistics Workforce Support",       description:"We help staff logistics operations throughout the entire supply chain. That includes everything from loading docks to big distribution centers. Our people are trained to work safely, handle paperwork, and do things efficiently.", features:["Logistics Workforce","Loading & Unloading Teams","Distribution Support","Transportation Coordination","Supply Chain Operations"], stat1:{val:"200+",lbl:"Logistics Workers"},  stat2:{val:"48hr",lbl:"Avg. Deployment"},   accent:PURPLE, flip:false },
+  { id:"corporate",      eyebrow:"Corporate Offices",      title:"Professional Corporate Support Workforce",      description:"For offices, we also offer trained support staff. This includes everyone from the front desk to those doing data entry in the back, helping to keep things running smoothly every day.", features:["Office Support Staff","Front Desk Executives","Data Entry Operators","Administrative Workforce","Back Office Support"],          stat1:{val:"100+",lbl:"Corporate Clients"}, stat2:{val:"24hr",lbl:"Response Time"},     accent:GOLD,   flip:true  },
+  { id:"industrial",     eyebrow:"Industrial Plants",      title:"Specialized Industrial Plant Workforce",        description:"Places like big industrial plants need workers who are specialized and really focus on safety. We send in plant operators, maintenance crews, and technical people who are trained for these kinds of high-risk, high-production plant jobs.", features:["Plant Operations Support","Maintenance Staff","Technical Workforce","Safety Compliance Teams","Production Support"],          stat1:{val:"80+",lbl:"Plant Clients"},      stat2:{val:"100%",lbl:"Safety Compliance"}, accent:PURPLE, flip:false },
+  { id:"commercial",     eyebrow:"Commercial Facilities",  title:"Complete Commercial Facility Management Staff", description:"And for commercial buildings, we handle all the staffing needs, from daily cleaning to technical maintenance, in places like malls, hospitals, hotels, and other big business complexes.", features:["Housekeeping Teams","Facility Supervisors","Electrical & Plumbing Support","Cleaning Operations","Maintenance Services"],          stat1:{val:"60+",lbl:"Facility Sites"},     stat2:{val:"100%",lbl:"SLA Compliance"},    accent:GOLD,   flip:true  },
 ];
 
 const CAPABILITIES = [
@@ -72,16 +72,13 @@ const IndustriesOverview = () => (
           <span className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full border text-xs font-semibold tracking-wide uppercase"
                 style={{ background: '#faf5fb', borderColor: '#e4d0e9', color: PURPLE }}>
             <span className="w-1.5 h-1.5 rounded-full" style={{ background: PURPLE }} />
-            Industries We Serve
+            Here are the main areas we focus on
           </span>
         </motion.div>
         <motion.h2 id="ind-overview-heading" variants={fadeInUp} className="font-display font-bold text-neutral-900 leading-[1.1] tracking-tight mb-4" style={{ fontSize: 'clamp(1.9rem,3.2vw,2.75rem)' }}>
-          Sectors We <span style={{ color: PURPLE }}>Specialise In</span>
+          We work in <span style={{ color: PURPLE }}>six key industries</span>, consistently providing reliable and adaptable staffing solutions.
         </motion.h2>
         <motion.div variants={fadeInUp} className="w-16 h-1 rounded-full mx-auto mb-5" style={{ background: `linear-gradient(90deg, ${PURPLE}, ${GOLD})` }} />
-        <motion.p variants={fadeInUp} className="text-neutral-500 text-[1.05rem] leading-relaxed">
-          Six core industry verticals where we deliver consistent, compliant, and scalable workforce solutions.
-        </motion.p>
       </motion.div>
       <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-5 lg:gap-6">
         {OVERVIEW.map((ind, i) => (
@@ -395,8 +392,8 @@ const IndustriesCTA = () => (
 const Industries = () => (
   <>
     <PageHero
-      title="Customized Workforce Solutions Across Multiple Industries"
-      subtitle="Stryper Solution Pvt. Ltd. delivers scalable manpower and operational support services tailored for industrial, logistics, commercial, and corporate business sectors."
+      title="We help businesses in many different industries with their staffing needs."
+      subtitle="Stryper Solution Pvt. Ltd. provides flexible teams and support services, specifically designed for industrial, logistics, retail, and corporate companies."
       breadcrumb="Industries"
       image={img3}
     />

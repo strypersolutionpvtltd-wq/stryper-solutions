@@ -22,33 +22,33 @@ function DeployIcon() { return (<svg width="26" height="26" viewBox="0 0 26 26" 
 function MonitorIcon() { return (<svg width="26" height="26" viewBox="0 0 26 26" fill="none"><rect x="3" y="4" width="20" height="14" rx="2" stroke="white" strokeWidth="1.6"/><path d="M9 22h8M13 18v4" stroke="white" strokeWidth="1.5" strokeLinecap="round"/><path d="M7 14l3.5-4 3 3 3.5-5 3 3" stroke="white" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/></svg>); }
 
 const OVERVIEW_CARDS = [
-  { id: "manpower",  title: "Industrial Manpower",            description: "Skilled, semi-skilled, and unskilled workers for manufacturing, production, and plant operations - vetted and ready.", icon: <ManpowerIcon />,  href: "#manpower"  },
-  { id: "logistics", title: "Logistics & Warehouse Staffing", description: "End-to-end staffing for warehousing, supply chain, and last-mile delivery - keeping your operations at full strength.", icon: <LogisticsIcon />, href: "#logistics"  },
-  { id: "facility",  title: "Facility Management",            description: "Housekeeping, security, maintenance, and soft services delivered through trained, supervised teams.", icon: <FacilityIcon />,  href: "#facility"   },
-  { id: "payroll",   title: "Payroll & Compliance",           description: "Full-cycle payroll processing with PF, ESI, PT, TDS compliance - handled accurately and on time.", icon: <PayrollIcon />,   href: "#payroll"    },
+  { id: "manpower",  title: "Industrial Manpower",            description: "Industrial Manpower: We find skilled, semi-skilled, and even entry-level workers for factories, production lines, and plant operations. Everyone we send is thoroughly checked and ready to start.", icon: <ManpowerIcon />,  href: "#manpower"  },
+  { id: "logistics", title: "Logistics & Warehouse Staffing", description: "Logistics and Warehouse Staff: We provide all the staff you need for warehouses, your supply chain, and even last-mile deliveries, making sure your operations run smoothly without a hitch.", icon: <LogisticsIcon />, href: "#logistics"  },
+  { id: "facility",  title: "Facility Management",            description: "Taking Care of Your Facilities: This includes things like cleaning, security, maintenance, and other support services. Our teams are trained and supervised to do a great job.", icon: <FacilityIcon />,  href: "#facility"   },
+  { id: "payroll",   title: "Payroll & Compliance",           description: "Payroll and Legal Stuff: We handle everything related to payroll, from processing salaries to making sure all the necessary contributions like PF, ESI, PT, and TDS are managed correctly and on time.", icon: <PayrollIcon />,   href: "#payroll"    },
 ];
 
 const PROCESS_STEPS = [
-  { step: 1, title: "Requirement Analysis",    description: "We understand your workforce needs, timelines, and compliance requirements through a structured discovery session.", icon: <AnalysisIcon /> },
-  { step: 2, title: "Workforce Planning",       description: "Tailored staffing plan with sourcing strategy, skill mapping, and deployment schedule aligned to your goals.", icon: <PlanningIcon /> },
-  { step: 3, title: "Deployment & Execution",  description: "Vetted workers deployed on schedule with full onboarding, documentation, and day-one readiness.", icon: <DeployIcon /> },
-  { step: 4, title: "Monitoring & Compliance", description: "Ongoing attendance tracking, performance reviews, and compliance audits for sustained quality.", icon: <MonitorIcon /> },
+  { step: 1, title: "Understanding What You Need",    description: "We sit down with you to really understand what kind of workers you need, when you need them, and any legal rules we need to follow.", icon: <AnalysisIcon /> },
+  { step: 2, title: "Planning Your Team",               description: "We create a specific staffing plan for you. This includes how we'll find people, match their skills to your jobs, and when they'll start, all to help you reach your goals.", icon: <PlanningIcon /> },
+  { step: 3, title: "Getting People Started",  description: "Our thoroughly checked workers are sent out on time. They get a full onboarding, all paperwork is handled, and they're ready to work from day one.", icon: <DeployIcon /> },
+  { step: 4, title: "Keeping an Eye On Things", description: "We continuously track attendance, review performance, and conduct audits to make sure everything stays up to standard and follows the rules.", icon: <MonitorIcon /> },
 ];
 
 const WHY_FEATURES = [
-  { title: "Skilled Workforce",       desc: "Every worker is background-checked, skill-assessed, and trained before deployment.",     accent: "purple" },
-  { title: "Fast Deployment",         desc: "From requirement to deployment in 48-72 hours. Your operations never stall.",             accent: "gold"   },
-  { title: "Operational Excellence",  desc: "Structured processes and quality controls ensure consistent service delivery.",           accent: "purple" },
-  { title: "Compliance Focus",        desc: "Full PF, ESI, labour law compliance managed end-to-end across all engagements.",         accent: "gold"   },
-  { title: "Client-Centric Support",  desc: "A dedicated account manager for every client with 24/7 escalation support.",             accent: "purple" },
-  { title: "Scalable Solutions",      desc: "Flex your workforce up or down without operational friction or long-term commitments.",   accent: "gold"   },
+  { title: "Skilled Workforce ecosystem",       desc: "Every person we send has a background check, their skills are tested, and they get training before they ever start working.",     accent: "purple" },
+  { title: "Fast Delivery Response",         desc: "We can get someone in place within 48 to 72 hours from when you tell us what you need. This means your business keeps moving without interruptions.",             accent: "gold"   },
+  { title: "Operational Consistency",  desc: "Our clear processes and quality checks mean you'll always get reliable service.",           accent: "purple" },
+  { title: "Audit Ready Compliance",        desc: "We handle everything related to payroll and manage all the tricky parts of labor laws for you smoothly.",         accent: "gold"   },
+  { title: "Personal Touch Support",  desc: "Work with Stryper Solution Pvt. Ltd. to get flexible staffing and top-notch operations delivered with a personal touch.",             accent: "purple" },
+  { title: "Flexible Staffing Model",      desc: "We do more than just find people to fill jobs. We help build a whole system of workers that runs smoothly, follows all the rules, and can grow.",   accent: "gold"   },
 ];
 
 const DETAIL_SERVICES = [
-  { id: "manpower",  eyebrow: "Industrial Manpower",  title: "Skilled Industrial Workforce On Demand",         description: "We deploy trained, vetted industrial workers across manufacturing, production, and plant environments. Our talent pool covers every skill level - from ITI-certified technicians to experienced machine operators.", features: ["Skilled Technicians & ITI Holders","Machine Operators","Production Workforce","Quality Inspection Staff","Diploma & Certified Workers"], stat1: { val: "300+", lbl: "Industrial Workers" }, stat2: { val: "48hr", lbl: "Avg. Deployment" }, accent: PURPLE, flip: false },
-  { id: "logistics", eyebrow: "Logistics & Warehouse", title: "Complete Logistics & Warehouse Staffing",        description: "From warehouse floor to last-mile delivery, we provide trained logistics personnel who keep your supply chain moving. Our workers are briefed on safety protocols, inventory systems, and operational SOPs.", features: ["Loaders & Packers","Warehouse Assistants","Pickers & Sorters","Inventory Executives","Forklift Operators"], stat1: { val: "150+", lbl: "Logistics Staff" }, stat2: { val: "99%", lbl: "On-Time Deployment" }, accent: GOLD, flip: true },
-  { id: "facility",  eyebrow: "Facility Management",  title: "Professional Facility Management Services",      description: "We manage the full spectrum of facility support - from daily housekeeping to technical maintenance. Our supervised teams operate across commercial complexes, corporate offices, hospitals, and industrial sites.", features: ["Housekeeping Staff","Office Support Personnel","Deep Cleaning Services","Electrical & Plumbing Support","Commercial Facility Services"], stat1: { val: "80+", lbl: "Facility Clients" }, stat2: { val: "100%", lbl: "SLA Compliance" }, accent: PURPLE, flip: false },
-  { id: "payroll",   eyebrow: "Payroll & Compliance", title: "End-to-End Payroll & Statutory Compliance",      description: "We handle the full payroll cycle - from attendance management to salary disbursement - with complete statutory compliance. Stay audit-ready while we manage the complexity of labour law requirements.", features: ["Payroll Processing","Attendance Management","Contract Staffing Documentation","Employee Documentation","PF, ESI, PT, TDS Compliance"], stat1: { val: "100%", lbl: "Compliance Rate" }, stat2: { val: "0", lbl: "Audit Failures" }, accent: GOLD, flip: true },
+  { id: "manpower",  eyebrow: "Industrial Manpower",  title: "Workers for Industry",         description: "We send out trained and thoroughly checked industrial workers to manufacturing sites, production lines, and various plant settings. We have people with all sorts of skills, from technicians with ITI certifications to seasoned machine operators.", features: ["Skilled Technicians & ITI Holders","Machine Operators","Production Workforce","Quality Inspection Staff","Diploma & Certified Workers"], stat1: { val: "300+", lbl: "Industrial Workers" }, stat2: { val: "48hr", lbl: "Avg. Deployment" }, accent: PURPLE, flip: false },
+  { id: "logistics", eyebrow: "Logistics & Warehouse", title: "Logistics and Warehouse Staff",        description: "Whether it's the warehouse floor or getting products to their final destination, we supply trained logistics staff to ensure your supply chain keeps running. Our workers get a full briefing on safety rules, how inventory systems work, and all the standard operating procedures.", features: ["Loaders & Packers","Warehouse Assistants","Pickers & Sorters","Inventory Executives","Forklift Operators"], stat1: { val: "150+", lbl: "Logistics Staff" }, stat2: { val: "99%", lbl: "On-Time Deployment" }, accent: GOLD, flip: true },
+  { id: "facility",  eyebrow: "Facility Management",  title: "Taking Care of Your Facilities",      description: "We take care of all aspects of facility support, from everyday cleaning to complex technical maintenance. Our supervised teams work in all sorts of places: commercial buildings, corporate offices, hospitals, and industrial sites.", features: ["Housekeeping Staff","Office Support Personnel","Deep Cleaning Services","Electrical & Plumbing Support","Commercial Facility Services"], stat1: { val: "80+", lbl: "Facility Clients" }, stat2: { val: "100%", lbl: "SLA Compliance" }, accent: PURPLE, flip: false },
+  { id: "payroll",   eyebrow: "Payroll & Compliance", title: "Payroll and Legal Stuff", description: "We manage the entire payroll process, from keeping track of attendance to paying salaries, all while making sure we follow every legal requirement. You can stay prepared for audits, as we handle all the tricky parts of labor laws for you.", features: ["Payroll Processing","Attendance Management","Contract Staffing Documentation","Employee Documentation","PF, ESI, PT, TDS Compliance"], stat1: { val: "100%", lbl: "Compliance Rate" }, stat2: { val: "0", lbl: "Audit Failures" }, accent: GOLD, flip: true },
 ];
 
 const ServicesOverview = () => (
@@ -60,14 +60,13 @@ const ServicesOverview = () => (
       <motion.div variants={staggerContainer(0.1)} initial="hidden" whileInView="visible" viewport={viewportOnce} className="text-center max-w-2xl mx-auto mb-14">
         <motion.div variants={fadeInUp} className="mb-5">
           <span className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full border text-xs font-semibold tracking-wide uppercase" style={{ background: "#faf5fb", borderColor: "#e4d0e9", color: PURPLE }}>
-            <span className="w-1.5 h-1.5 rounded-full" style={{ background: PURPLE }} />Our Services
+            <span className="w-1.5 h-1.5 rounded-full" style={{ background: PURPLE }} />Here's what we do
           </span>
         </motion.div>
         <motion.h2 id="overview-heading" variants={fadeInUp} className="font-display font-bold text-neutral-900 leading-[1.1] tracking-tight mb-4" style={{ fontSize: "clamp(1.9rem,3.2vw,2.75rem)" }}>
-          What We <span style={{ color: PURPLE }}>Deliver</span>
+          We have <span style={{ color: PURPLE }}>four main service areas</span> that cover everything you might need for your team and daily operations.
         </motion.h2>
         <motion.div variants={fadeInUp} className="w-16 h-1 rounded-full mx-auto mb-5" style={{ background: "linear-gradient(90deg, #8B3A8F, #F5A623)" }} />
-        <motion.p variants={fadeInUp} className="text-neutral-500 text-[1.05rem] leading-relaxed">Four core service pillars designed to cover every aspect of your workforce and operational needs.</motion.p>
       </motion.div>
       <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-5 lg:gap-6">
         {OVERVIEW_CARDS.map((s, i) => <ServiceCard key={s.id} icon={s.icon} title={s.title} description={s.description} href={s.href} index={i} />)}
@@ -170,7 +169,7 @@ const ProcessHighlights = () => (
       <motion.div variants={staggerContainer(0.1)} initial="hidden" whileInView="visible" viewport={viewportOnce} className="text-center max-w-xl mx-auto mb-14">
         <motion.div variants={fadeInUp} className="mb-5">
           <span className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full border text-xs font-semibold tracking-wide uppercase" style={{ background: '#faf5fb', borderColor: '#e4d0e9', color: PURPLE }}>
-            <span className="w-1.5 h-1.5 rounded-full" style={{ background: PURPLE }} />Our Process
+            <span className="w-1.5 h-1.5 rounded-full" style={{ background: PURPLE }} />How We Manage Your Workforce
           </span>
         </motion.div>
         <motion.h2 id="process-svc-heading" variants={fadeInUp} className="font-display font-bold text-neutral-900 leading-[1.1] tracking-tight mb-4" style={{ fontSize: 'clamp(1.9rem,3.2vw,2.75rem)' }}>
@@ -194,14 +193,14 @@ const WhyChooseServices = () => (
       <motion.div variants={staggerContainer(0.1)} initial="hidden" whileInView="visible" viewport={viewportOnce} className="text-center max-w-xl mx-auto mb-14">
         <motion.div variants={fadeInUp} className="mb-5">
           <span className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full border text-xs font-semibold tracking-wide uppercase" style={{ background: '#faf5fb', borderColor: '#e4d0e9', color: PURPLE }}>
-            <span className="w-1.5 h-1.5 rounded-full" style={{ background: PURPLE }} />Why Choose Us
+            <span className="w-1.5 h-1.5 rounded-full" style={{ background: PURPLE }} />Why Companies Work With Us
           </span>
         </motion.div>
         <motion.h2 id="why-svc-heading" variants={fadeInUp} className="font-display font-bold text-neutral-900 leading-[1.1] tracking-tight mb-4" style={{ fontSize: "clamp(1.9rem,3.2vw,2.75rem)" }}>
           Why Businesses <span style={{ color: PURPLE }}>Choose Our Services</span>
         </motion.h2>
         <motion.div variants={fadeInUp} className="w-16 h-1 rounded-full mx-auto mb-5" style={{ background: 'linear-gradient(90deg, #8B3A8F, #F5A623)' }} />
-        <motion.p variants={fadeInUp} className="text-neutral-500 text-[1.02rem] leading-relaxed">We don&apos;t just fill positions - we build workforce ecosystems that run efficiently, compliantly, and at scale.</motion.p>
+        <motion.p variants={fadeInUp} className="text-neutral-500 text-[1.02rem] leading-relaxed">We do more than just find people to fill jobs. We help build a whole system of workers that runs smoothly, follows all the rules, and can grow with your business.</motion.p>
         </motion.div>
       <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-5">
         {WHY_FEATURES.map((f, i) => (
@@ -234,15 +233,14 @@ const ServicesCTA = () => (
       <motion.div variants={staggerContainer(0.12)} initial="hidden" whileInView="visible" viewport={viewportOnce}>
         <motion.div variants={fadeInUp} className="mb-6">
           <span className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full text-xs font-semibold tracking-wide uppercase" style={{ background: 'rgba(255,255,255,0.12)', border: '1px solid rgba(255,255,255,0.2)', color: 'rgba(255,255,255,0.8)' }}>
-            <span className="w-1.5 h-1.5 rounded-full animate-pulse" style={{ background: GOLD }} />Get Started Today
+            <span className="w-1.5 h-1.5 rounded-full animate-pulse" style={{ background: GOLD }} />Work with Stryper Solution Pvt. Ltd.
           </span>
         </motion.div>
         <motion.h2 id="svc-cta-heading" variants={fadeInUp} className="font-display font-bold text-white leading-[1.08] tracking-tight mb-5 text-balance" style={{ fontSize: 'clamp(2rem,4vw,3.2rem)' }}>
-          Need Reliable{' '}
-          <span style={{ background: 'linear-gradient(90deg,#F5A623,#fbbf24)', WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent', backgroundClip: 'text' }}>Workforce Solutions?</span>
+          Need Reliable <span style={{ background: 'linear-gradient(90deg,#F5A623,#fbbf24)', WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent', backgroundClip: 'text' }}>Workforce Solutions?</span>
         </motion.h2>
         <motion.p variants={fadeInUp} className="text-white/65 text-lg leading-relaxed max-w-xl mx-auto mb-10">
-          Partner with Stryper Solution Pvt. Ltd. for scalable staffing and operational excellence - delivered with precision, compliance, and care.
+          Get flexible staffing and top-notch operations. We deliver it all with accuracy, making sure all rules are followed, and with a personal touch.
         </motion.p>
         <motion.div variants={fadeInUp} className="flex flex-wrap items-center justify-center gap-4">
           <motion.div whileHover={{ scale: 1.04 }} whileTap={{ scale: 0.97 }}>
@@ -258,7 +256,7 @@ const ServicesCTA = () => (
           </motion.div>
         </motion.div>
         <motion.div variants={fadeInUp} className="flex flex-wrap items-center justify-center gap-x-7 gap-y-2 mt-8">
-          {['No commitment required','Response within 24 hours','Free initial consultation'].map((t) => (
+          {['You don\'t have to commit to anything','We\'ll get back to you within 24 hours','Your first chat with us is free'].map((t) => (
             <span key={t} className="flex items-center gap-2 text-sm" style={{ color: 'rgba(255,255,255,0.55)' }}>
               <span className="font-bold text-base leading-none" style={{ color: GOLD }}>✓</span>{t}
             </span>
@@ -271,7 +269,7 @@ const ServicesCTA = () => (
 
 const Services = () => (
   <>
-    <PageHero title="Comprehensive Workforce & Operational Support Solutions" subtitle="We provide scalable staffing, workforce management, logistics support, and operational services tailored for modern industries and business environments." breadcrumb="Services" image={img2} />
+    <PageHero title="Complete Help for Your Staff and Operations." subtitle="We provide flexible staffing, help manage your team, take care of logistics, and handle other operational tasks. We customize these services for today's businesses and industries." breadcrumb="Services" image={img2} />
     <ServicesOverview />
     <DetailedServices />
     <ProcessHighlights />

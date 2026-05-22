@@ -1,3 +1,4 @@
+import { Outlet } from 'react-router-dom';
 import Navbar from '@/components/navbar/Navbar';
 import Footer from '@/components/footer/Footer';
 import WhatsAppButton from '@/components/shared/WhatsAppButton';
@@ -9,15 +10,13 @@ const MainLayout = ({ children }) => {
       <Navbar />
 
       <main className="flex-1">
-        {children}
+        {/* Support both nested route Outlet and direct children usage */}
+        {children ?? <Outlet />}
       </main>
 
       <Footer />
 
-      {/* Back To Top Button */}
       <BackToTop />
-
-      {/* WhatsApp Floating Button */}
       <WhatsAppButton />
     </div>
   );

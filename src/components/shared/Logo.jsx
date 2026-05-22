@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-import logoImg from "@/assets/image/logo.png"; // Aapki PNG file ka path
+import logoImg from "@/assets/image/logo.jpeg"; // Aapki PNG file ka path
 
 const Logo = ({ variant = "dark" }) => {
   return (
@@ -12,7 +12,7 @@ const Logo = ({ variant = "dark" }) => {
       <img
         src={logoImg}
         alt="Stryper Solution Logo"
-        className="h-10 w-auto object-contain"
+        className="h-16 w-auto object-contain"
       />
     </Link>
   );
