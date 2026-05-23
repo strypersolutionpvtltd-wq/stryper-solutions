@@ -13,12 +13,12 @@ function Chk() {
 }
 
 const JOBS = [
-  { id:1, title:'Business Development Executive (BDE)', location:'Gurugram, HR', type:'Full-Time', exp:'1-3 yrs', desc:'Drive business growth by identifying new clients, building relationships, and pitching Stryper staffing solutions. Walk-in interviews at Sector 62, Gurugram.' },
-  { id:2, title:'Admin Executive',                     location:'Jaipur, RJ',   type:'Full-Time', exp:'1-2 yrs', desc:'Handle office tasks, manage phone calls & emails, coordinate meetings, maintain office supplies, and support management with administrative tasks.' },
-  { id:3, title:'Client Handling Executive',            location:'Pune, MH',     type:'Full-Time', exp:'0-1 yr',  desc:'Freshers welcome. Communicate with clients, manage queries via email/phone/chat, maintain client relationships, and ensure timely service delivery.' },
-  { id:4, title:'Guest Handling Executive',             location:'Lucknow / Pune / Jaipur', type:'Full-Time', exp:'0-2 yrs', desc:'Greet and welcome guests professionally, handle inquiries, assist with check-in/check-out, manage reservations, and maintain a customer-focused attitude.' },
-  { id:5, title:'Multi-Skilled Technician',             location:'Lucknow / Pune', type:'Full-Time', exp:'1-3 yrs', desc:'Perform maintenance, repair & installation tasks. Troubleshoot electrical, plumbing, HVAC, and mechanical systems. Read technical manuals and blueprints.' },
-  { id:6, title:'Factory Helpers & Workers',            location:'Multiple Sites', type:'Full-Time', exp:'0-2 yrs', desc:'Helpers: assembly line support, material handling, packaging. Workers: machine operation, quality control, fabrication. For manufacturing plants & factories.' },
+  { id:1, title:'Business Development Manager', location:'Gurugram / Remote', type:'Full-Time', exp:'2-5 yrs', desc:'Lead our business growth efforts by identifying new corporate partnerships and managing existing client relationships for Stryper Solution.' },
+  { id:2, title:'HR Operations Executive',        location:'Gurugram, HR',   type:'Full-Time', exp:'1-3 yrs', desc:'Join our core HR team to manage workforce deployment, compliance, and employee relations for our growing pan-India operations.' },
+  { id:3, title:'Regional Operations Head',      location:'Pune / Mumbai',  type:'Full-Time', exp:'5-8 yrs', desc:'Oversee our regional service delivery, ensuring operational excellence and client satisfaction across multiple industrial sites.' },
+  { id:4, title:'Digital Marketing Specialist',  location:'Remote / Hybrid',type:'Full-Time', exp:'1-3 yrs', desc:'Help us build Stryper brand presence online. Manage our social media, content strategy, and lead generation campaigns.' },
+  { id:5, title:'Technical Support Lead',        location:'Gurugram, HR',   type:'Full-Time', exp:'3-5 yrs', desc:'Support our internal digital infrastructure and provide technical guidance for our site-based management tools.' },
+  { id:6, title:'Accounts & Finance Manager',    location:'Gurugram, HR',   type:'Full-Time', exp:'4-6 yrs', desc:'Manage internal company finances, payroll processing for our massive workforce, and ensure complete statutory compliance.' },
 ];
 
 const WHY = [
@@ -37,7 +37,7 @@ const STEPS = [
   { s:4, t:'Deployment & Onboarding',  d:'Once chosen, we take care of onboarding, documentation, and a seamless first day.' },
 ];
 
-const POS = ['Business Development Executive (BDE)','Admin Executive','Client Handling Executive','Guest Handling Executive','Multi-Skilled Technician','Factory Helper / Worker','Other'];
+const POS = ['Business Development Manager', 'HR Operations Executive', 'Regional Operations Head', 'Digital Marketing Specialist', 'Technical Support Lead', 'Accounts & Finance Manager', 'Admin & Front Office', 'Other'];
 
 function CareersIntro() {
   return (
@@ -47,16 +47,16 @@ function CareersIntro() {
           <motion.div variants={staggerContainer(0.1,0.05)} initial="hidden" whileInView="visible" viewport={viewportOnce} className="flex flex-col">
             <motion.div variants={fadeInUp} className="mb-5">
               <span className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full border text-xs font-semibold tracking-wide uppercase" style={{background:'#faf5fb',borderColor:'#e4d0e9',color:P}}>
-                <span className="w-1.5 h-1.5 rounded-full" style={{background:P}}/>Life at Stryper Solution
+                <span className="w-1.5 h-1.5 rounded-full" style={{background:P}}/>Work AT Stryper Solution
               </span>
             </motion.div>
             <motion.h2 variants={fadeInUp} className="font-display font-bold text-neutral-900 leading-[1.1] tracking-tight mb-5" style={{fontSize:'clamp(1.8rem,3vw,2.5rem)'}}>
-              A Workplace Built On <span style={{color:P}}>Trust &amp; Growth</span>
+              Join Our <span style={{color:P}}>Core Corporate Team</span>
             </motion.h2>
-            <motion.p variants={fadeInUp} className="text-neutral-500 text-[1.02rem] leading-relaxed mb-5">At Stryper Solution Pvt. Ltd. we believe that our people are our biggest assets. We foster an environment where everyone on the team feels valued, supported and empowered to grow. Kickstart your career or secure a solid long-term position in one of our structured jobs with timely payment and management that genuinely cares about your professional journey.</motion.p>
-            <motion.p variants={fadeInUp} className="text-neutral-500 text-[1.02rem] leading-relaxed mb-8">We are not just a staffing company. We are a career partner dedicated to your long-term success. That means we’re hiring for a whole bunch of jobs.” Find the right opportunity and apply now.</motion.p>
+            <motion.p variants={fadeInUp} className="text-neutral-500 text-[1.02rem] leading-relaxed mb-5">At Stryper Solution Pvt. Ltd., we are looking for passionate professionals to join our internal team. Unlike our job board for external workers, this page is dedicated to those who want to build a career *within* our organization—managing operations, HR, business development, and more.</motion.p>
+            <motion.p variants={fadeInUp} className="text-neutral-500 text-[1.02rem] leading-relaxed mb-8">We foster a culture of ownership and growth. If you are ready to help us lead the workforce solutions industry, explore our internal openings below.</motion.p>
             <motion.ul variants={staggerContainer(0.08,0.1)} className="space-y-3 mb-8" role="list">
-              {['Defined career pathways and regular reviews.', 'Salary paid on time with all statutory benefits.', 'Training and skills development support.', 'Dedicated HR team for each employee.'].map(pt=>(
+              {['Professional corporate environment.', 'Clear career growth within the company.', 'Competitive compensation & benefits.', 'Opportunity to lead large-scale operations.'].map(pt=>(
                 <motion.li key={pt} variants={fadeInUp} className="flex items-center gap-3">
                   <span className="w-5 h-5 rounded-full flex items-center justify-center shrink-0" style={{background:P+'15',color:P}}><Chk/></span>
                   <span className="text-sm text-neutral-700 font-medium">{pt}</span>
@@ -65,7 +65,7 @@ function CareersIntro() {
             </motion.ul>
             <motion.div variants={fadeInUp}>
               <a href="#positions" className="inline-flex items-center gap-2.5 px-7 py-3.5 rounded-lg text-sm font-semibold text-white w-fit" style={{background:P}}>
-                View Open Positions
+                Explore Internal Openings
                 <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M2.5 7h9M7.5 3l4 4-4 4" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/></svg>
               </a>
             </motion.div>
@@ -74,56 +74,25 @@ function CareersIntro() {
           <motion.div variants={fadeInRight} initial="hidden" whileInView="visible" viewport={viewportOnce}>
             <div className="relative w-full aspect-[4/4.2] max-w-[480px] mx-auto lg:ml-auto">
               <div className="absolute inset-0 rounded-3xl overflow-hidden shadow-strong">
-                <img src={img4} alt="Stryper Solution team" className="w-full h-full object-cover object-center"/>
+                <img src={img4} alt="Stryper Solution corporate office" className="w-full h-full object-cover object-center"/>
                 <div className="absolute inset-0" style={{background:'linear-gradient(145deg,rgba(30,10,50,0.75) 0%,rgba(60,20,80,0.5) 100%)'}} aria-hidden="true"/>
                 <div className="relative z-10 p-6 flex flex-col gap-4 h-full">
                   <div className="flex items-center justify-between">
-                    <p className="text-white/50 text-[10px] uppercase tracking-widest font-medium">Company Overview</p>
+                    <p className="text-white/50 text-[10px] uppercase tracking-widest font-medium">Internal Hiring</p>
                     <span className="flex items-center gap-1.5 px-2.5 py-1 rounded-full text-[9px] font-semibold bg-emerald-500/20 text-emerald-300 border border-emerald-400/25">
-                      <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse"/>Hiring
+                      <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse"/>Actively Hiring
                     </span>
                   </div>
                   <div className="grid grid-cols-2 gap-3">
-                    {[{val:'500+',lbl:'Workforce',c:'text-white'},{val:'50+',lbl:'Clients',c:'text-[#F5A623]'},{val:'10+',lbl:'Industries',c:'text-emerald-300'},{val:'2014',lbl:'Est. Year',c:'text-white/70'}].map(s=>(
+                    {[{val:'Corporate',lbl:'Roles',c:'text-white'},{val:'Pan-India',lbl:'Presence',c:'text-[#F5A623]'},{val:'Top Tier',lbl:'Management',c:'text-emerald-300'},{val:'2021',lbl:'Est. Year',c:'text-white/70'}].map(s=>(
                       <div key={s.lbl} className="bg-white/10 rounded-2xl px-3 py-3 text-center border border-white/10">
                         <p className={'text-xl font-bold font-display leading-none mb-1 '+s.c}>{s.val}</p>
                         <p className="text-white/45 text-[9px] font-medium">{s.lbl}</p>
                       </div>
                     ))}
                   </div>
-                  <div className="bg-white/10 rounded-2xl px-4 py-3.5 border border-white/10 flex-1">
-                    <p className="text-white/60 text-[10px] uppercase tracking-widest mb-3">Open Roles</p>
-                    <div className="space-y-2">
-                      {['BDE','Admin Executive','Client Handling'].map(r=>(
-                        <div key={r} className="flex items-center justify-between py-1.5 border-b border-white/5 last:border-0">
-                          <div className="flex items-center gap-2">
-                            <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 shrink-0"/>
-                            <span className="text-white/75 text-[10px] font-medium">{r}</span>
-                          </div>
-                          <span className="text-[8px] font-semibold px-1.5 py-0.5 rounded-full bg-emerald-500/20 text-emerald-300">Open</span>
-                        </div>
-                      ))}
-                    </div>
-                  </div>
                 </div>
               </div>
-              <motion.div initial={{opacity:0,scale:0.85}} whileInView={{opacity:1,scale:1}} viewport={viewportOnce} transition={{duration:0.45,delay:0.6}} className="absolute -bottom-4 -left-4 z-10">
-                <div className="flex items-center gap-3 px-4 py-3 rounded-2xl bg-white shadow-strong border border-neutral-100">
-                  <div className="w-8 h-8 rounded-xl flex items-center justify-center shrink-0" style={{background:G+'20',color:G}}>
-                    <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M7 1l1.4 2.8 3.1.45-2.25 2.2.53 3.1L7 8.1l-2.78 1.45.53-3.1L2.5 4.25l3.1-.45L7 1z" fill="currentColor"/></svg>
-                  </div>
-                  <div>
-                    <p className="text-xs font-bold text-neutral-900 leading-none">Great Place to Work</p>
-                    <p className="text-[10px] text-neutral-500 mt-0.5">Trusted by 500+ workers</p>
-                  </div>
-                </div>
-              </motion.div>
-              <motion.div initial={{opacity:0,x:12}} whileInView={{opacity:1,x:0}} viewport={viewportOnce} transition={{duration:0.45,delay:0.75}} className="absolute -top-4 -right-4 z-10">
-                <div className="flex items-center gap-1.5 px-3.5 py-2 rounded-full bg-white shadow-medium border border-neutral-100">
-                  <span className="w-2 h-2 rounded-full bg-emerald-500 animate-pulse" aria-hidden="true"/>
-                  <span className="text-[11px] font-semibold text-neutral-700">Now Hiring</span>
-                </div>
-              </motion.div>
             </div>
           </motion.div>
         </div>
@@ -400,7 +369,12 @@ function CareersCTA() {
 function Careers() {
   return (
     <>
-      <PageHero title="Build Your Career With Stryper Solution Pvt. Ltd." subtitle="Join a growing workforce solutions company committed to operational excellence, professional growth, and industry-leading manpower services." breadcrumb="Careers" image={img4}/>
+      <PageHero 
+        title="Build Your Career AT Stryper Solution" 
+        subtitle="Join our core corporate team. We are hiring professionals to lead our HR, Operations, and Business growth across India." 
+        breadcrumb="Careers" 
+        image={img4}
+      />
       <CareersIntro/>
       <OpenPositions/>
       <WhyWorkWithUs/>

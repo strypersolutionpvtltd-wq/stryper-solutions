@@ -479,12 +479,61 @@ const Jobs = () => {
 
   const filtered = useMemo(() => {
     return MOCK_JOBS.filter(j => {
-      if (search.keyword && !j.title.toLowerCase().includes(search.keyword.toLowerCase()) &&
-          !j.company.toLowerCase().includes(search.keyword.toLowerCase()) &&
-          !j.skills.some(s => s.toLowerCase().includes(search.keyword.toLowerCase()))) return false;
-      if (search.location && !j.location.toLowerCase().includes(search.location.toLowerCase())) return false;
+      // Keyword search (Title, Company, Skills) - Fuzzy (includes)
+      const kw = search.keyword.toLowerCase();
+      if (kw && !j.title.toLowerCase().includes(kw) &&
+          !j.company.toLowerCase().includes(kw) &&
+          !j.skills.some(s => s.toLowerCase().includes(kw))) return false;
+      
+      // Location search - Fuzzy (includes)
+      const loc = search.location.toLowerCase();
+      if (loc && !j.location.toLowerCase().includes(loc)) return false;
+      
+      // Top bar Experience filter - Fuzzy
+      if (search.experience) {
+        const expSelected = search.experience.toLowerCase();
+        const jExp = j.experience.toLowerCase();
+        // If selected is '3-6 Years' and job is '2-4 Years', it's nearby
+        if (!jExp.includes(expSelected.split(' ')[0])) {
+           // Allow nearby if first numbers match
+        }
+      }
+
+      // Sidebar: Job Type filter
       if (filters.type && j.type !== filters.type) return false;
+      
+      // Sidebar: Work Mode filter
       if (filters.mode && j.locationType !== filters.mode) return false;
+
+      // Sidebar: Experience Level filter
+      if (filters.exp && !j.experience.includes(filters.exp.split(' ')[0])) return false;
+
+      // Top bar Salary filter - Minimum Salary Logic
+      if (search.salary) {
+        const minSalary = parseInt(search.salary);
+        const jobSalaryMatch = j.salary.match(/\d+/);
+        if (jobSalaryMatch) {
+          const jobMinSalary = parseInt(jobSalaryMatch[0]);
+          if (jobMinSalary < minSalary) return false;
+        }
+      }
+
+      // Sidebar: Salary Range filter
+      if (filters.salary) {
+        const selMin = parseInt(filters.salary.match(/\d+/)[0]);
+        const jobMin = parseInt(j.salary.match(/\d+/)[0]);
+        if (jobMin < selMin) return false;
+      }
+
+      // Sidebar: Date Posted filter
+      if (filters.date && filters.date !== 'Any time') {
+        const days = filters.date === 'Last 24 hours' ? 1 : 
+                     filters.date === 'Last 3 days' ? 3 : 
+                     filters.date === 'Last week' ? 7 : 
+                     filters.date === 'Last month' ? 30 : 999;
+        if (j.postedDays > days) return false;
+      }
+
       return true;
     });
   }, [search, filters]);
@@ -493,6 +542,12 @@ const Jobs = () => {
   const paginated = filtered.slice((page - 1) * JOBS_PER_PAGE, page * JOBS_PER_PAGE);
 
   const handleSearch = (e) => { e.preventDefault(); setPage(1); };
+
+  const handleReset = () => {
+    setSearch({ keyword: '', location: '', experience: '', salary: '' });
+    resetFilters();
+    setPage(1);
+  };
 
   return (
     <>
@@ -546,16 +601,29 @@ const Jobs = () => {
               <option value="">Experience</option>
               {['0-1 Years','1-3 Years','3-6 Years','6-10 Years','10+ Years'].map(v => <option key={v}>{v}</option>)}
             </select>
-            <select value={search.salary} onChange={e => setSearch(s => ({ ...s, salary: e.target.value }))}
-              className="px-3 py-2 rounded-xl bg-neutral-50 border border-neutral-100 text-sm text-neutral-600 outline-none md:w-32">
-              <option value="">Salary</option>
-              {['0-5 LPA','5-10 LPA','10-20 LPA','20-40 LPA','40+ LPA'].map(v => <option key={v}>{v}</option>)}
-            </select>
-            <motion.button type="submit" whileHover={{ scale: 1.03 }} whileTap={{ scale: 0.97 }}
-              className="px-6 py-2.5 rounded-xl text-white text-sm font-semibold transition-all"
-              style={{ background: 'linear-gradient(135deg, #8B3A8F, #F5A623)', boxShadow: '0 4px 16px rgba(139,58,143,0.4)' }}>
-              Search
-            </motion.button>
+            
+            <div className="flex items-center gap-2 px-3 py-2 rounded-xl bg-neutral-50 border border-neutral-100 md:w-40">
+              <span className="text-neutral-400 text-sm font-semibold">₹</span>
+              <input 
+                type="number"
+                value={search.salary} 
+                onChange={e => setSearch(s => ({ ...s, salary: e.target.value }))}
+                placeholder="Min LPA (e.g. 5)"
+                className="bg-transparent text-sm text-neutral-700 placeholder-neutral-400 outline-none w-full" 
+              />
+            </div>
+
+            <div className="flex gap-2 md:w-auto w-full">
+              <motion.button type="submit" whileHover={{ scale: 1.03 }} whileTap={{ scale: 0.97 }}
+                className="flex-1 md:px-6 py-2.5 rounded-xl text-white text-sm font-semibold transition-all"
+                style={{ background: 'linear-gradient(135deg, #8B3A8F, #F5A623)', boxShadow: '0 4px 166px rgba(139,58,143,0.4)' }}>
+                Search
+              </motion.button>
+              <motion.button type="button" onClick={handleReset} whileHover={{ scale: 1.03 }} whileTap={{ scale: 0.97 }}
+                className="px-4 py-2.5 rounded-xl border border-neutral-200 text-neutral-600 text-sm font-semibold hover:bg-neutral-50 transition-all">
+                Reset
+              </motion.button>
+            </div>
           </motion.form>
         </div>
       </section>
@@ -656,61 +724,7 @@ const Jobs = () => {
         </div>
       </div>
 
-      {/* ── JOBS FOOTER ── */}
-      <footer className="mt-12" style={{ background: '#1a0d1b' }}>
-        <div className="container mx-auto px-4 max-w-6xl py-14">
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-10">
-            {/* Col 1 */}
-            <div>
-              <h4 className="text-white font-semibold text-sm mb-5 uppercase tracking-wide">Useful Links</h4>
-              <ul className="space-y-2.5">
-                {[['Home','/'],['About','/about'],['Careers','/careers'],['Contact','/contact'],['Terms','#']].map(([l,p]) => (
-                  <li key={l}><Link to={p} className="text-neutral-400 text-sm hover:text-white transition-colors">{l}</Link></li>
-                ))}
-              </ul>
-            </div>
-            {/* Col 2 */}
-            <div>
-              <h4 className="text-white font-semibold text-sm mb-5 uppercase tracking-wide">Browse Job Categories</h4>
-              <ul className="space-y-2.5">
-                {['Web Development','Backend Development','Cyber Security','UI/UX Design','Digital Marketing','AI / ML'].map(c => (
-                  <li key={c}><button className="text-neutral-400 text-sm hover:text-white transition-colors text-left">{c}</button></li>
-                ))}
-              </ul>
-            </div>
-            {/* Col 3 */}
-            <div>
-              <h4 className="text-white font-semibold text-sm mb-5 uppercase tracking-wide">Contact Us</h4>
-              <div className="space-y-3 text-sm text-neutral-400">
-                <p className="flex items-center gap-2">
-                  <svg width="14" height="14" viewBox="0 0 16 16" fill="none"><path d="M2 4l6 5 6-5" stroke="currentColor" strokeWidth="1.4" strokeLinecap="round"/><rect x="1" y="3" width="14" height="10" rx="2" stroke="currentColor" strokeWidth="1.4"/></svg>
-                  Strypersolutionpvtltd@gmail.com
-                </p>
-                <p className="flex items-center gap-2">
-                  <svg width="14" height="14" viewBox="0 0 16 16" fill="none"><path d="M3 2h3l1.5 3.5-2 1.5a9 9 0 0 0 3.5 3.5l1.5-2L14 10v3a1 1 0 0 1-1 1A12 12 0 0 1 2 3a1 1 0 0 1 1-1z" stroke="currentColor" strokeWidth="1.4" strokeLinejoin="round"/></svg>
-                  +91 84485 80303
-                </p>
-                <div className="flex gap-3 mt-4">
-                  {['f','t','in'].map(s => (
-                    <button key={s} className="w-8 h-8 rounded-lg bg-white/10 hover:bg-brand-purple-600 flex items-center justify-center text-white text-xs font-bold transition-colors">
-                      {s}
-                    </button>
-                  ))}
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div className="border-t border-white/10 py-5">
-          <div className="container mx-auto px-4 max-w-6xl flex flex-col md:flex-row items-center justify-between gap-2 text-xs text-neutral-500">
-            <p>© {new Date().getFullYear()} Stryper Solution Pvt. Ltd. All rights reserved.</p>
-            <div className="flex gap-4">
-              <button className="hover:text-white transition-colors">Privacy Policy</button>
-              <button className="hover:text-white transition-colors">Terms of Service</button>
-            </div>
-          </div>
-        </div>
-      </footer>
+      
     </div>
 
     {/* Apply Modal */}

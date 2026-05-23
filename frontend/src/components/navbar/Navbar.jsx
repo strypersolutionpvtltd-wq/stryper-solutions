@@ -58,19 +58,6 @@ const Navbar = () => {
             </div>
             {/* Right: auth buttons */}
             <div className="flex items-center gap-3">
-              <button
-                onClick={openSignIn}
-                className="text-white/80 hover:text-white text-xs font-semibold tracking-wide transition-colors"
-              >
-                Sign In
-              </button>
-              <span className="text-white/30">|</span>
-              <button
-                onClick={openSignUp}
-                className="px-3 py-1 rounded-md bg-white/15 hover:bg-white/25 text-white text-xs font-semibold tracking-wide transition-colors"
-              >
-                Sign Up
-              </button>
             </div>
           </div>
         </div>

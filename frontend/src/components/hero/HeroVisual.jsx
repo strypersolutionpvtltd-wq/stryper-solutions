@@ -57,8 +57,8 @@ const HeroVisual = () => (
         {/* KPI row — 3 equal tiles */}
         <div className="grid grid-cols-3 gap-2">
           {[
-            { val: '500+', lbl: 'Workers',   color: 'text-white'            },
-            { val: '50+',  lbl: 'Clients',   color: 'text-brand-gold-300'   },
+            { val: '250+', lbl: 'Workers',   color: 'text-white'            },
+            { val: '15+',  lbl: 'Clients',   color: 'text-brand-gold-300'  },
             { val: '98%',  lbl: 'Retention', color: 'text-emerald-300'      },
           ].map((k) => (
             <div

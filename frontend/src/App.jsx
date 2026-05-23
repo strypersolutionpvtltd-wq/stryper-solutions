@@ -27,6 +27,18 @@ import Notifications    from '@/hire-zone/pages/Notifications';
 import Settings         from '@/hire-zone/pages/Settings';
 import CompanyProfile   from '@/hire-zone/pages/CompanyProfile';
 
+// Admin layout + pages
+import AdminLayout    from '@/layouts/admin/AdminLayout';
+import AdminDashboard from '@/pages/admin/AdminDashboard';
+
+/**
+ * Guard for /admin/* — basic guard for demo.
+ */
+const AdminGuard = () => {
+  // In real app, check for admin role
+  return <AdminLayout />;
+};
+
 /**
  * Guard for /hire-zone/* — redirects to / if not authenticated as company.
  * Renders HireZoneLayout (which contains <Outlet />) when authenticated.
@@ -84,6 +96,14 @@ function App() {
         <Route path="settings"         element={<Settings />} />
         <Route path="company-profile"  element={<CompanyProfile />} />
         <Route path="*"                element={<HireZoneNotFound />} />
+      </Route>
+
+      {/* ── Admin routes ── */}
+      <Route path="/admin" element={<AdminGuard />}>
+        <Route index element={<Navigate to="/admin/dashboard" replace />} />
+        <Route path="dashboard" element={<AdminDashboard />} />
+        {/* Placeholder routes for other admin pages */}
+        <Route path="*" element={<div className="p-10 text-center text-neutral-500">Page under development</div>} />
       </Route>
     </Routes>
   );

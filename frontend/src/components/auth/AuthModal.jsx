@@ -1,18 +1,19 @@
 import { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import SignInForm from './SignInForm';
-import SignUpChoice from './SignUpChoice';
 import SignUpForm from './SignUpForm';
+import logoImg from "@/assets/image/logo.jpeg";
 
 /**
  * AuthModal — handles Sign In / Sign Up flow
- * view: 'signin' | 'signup-choice' | 'signup-hire-workforce' | 'signup-find-job'
  */
 const AuthModal = ({ isOpen, onClose, defaultView = 'signin' }) => {
-  const [view, setView] = useState(defaultView);
+  const [view, setView] = useState(defaultView === 'signin' ? 'signin' : 'signup');
 
   useEffect(() => {
-    if (isOpen) setView(defaultView);
+    if (isOpen) {
+      setView(defaultView === 'signin' ? 'signin' : 'signup');
+    }
   }, [isOpen, defaultView]);
 
   useEffect(() => {
@@ -59,31 +60,52 @@ const AuthModal = ({ isOpen, onClose, defaultView = 'signin' }) => {
                 </svg>
               </button>
 
+              <div className="p-8 pb-0 flex flex-col items-center">
+                <img src={logoImg} alt="Logo" className="h-12 w-auto mb-6" />
+                
+                {/* Tabs */}
+                <div className="flex w-full border-b border-neutral-100 mb-6">
+                  <button
+                    onClick={() => setView('signin')}
+                    className={`flex-1 pb-3 text-sm font-semibold transition-all border-b-2 ${
+                      view === 'signin' ? 'border-brand-purple-600 text-brand-purple-600' : 'border-transparent text-neutral-400'
+                    }`}
+                  >
+                    Sign In
+                  </button>
+                  <button
+                    onClick={() => setView('signup')}
+                    className={`flex-1 pb-3 text-sm font-semibold transition-all border-b-2 ${
+                      view === 'signup' ? 'border-brand-purple-600 text-brand-purple-600' : 'border-transparent text-neutral-400'
+                    }`}
+                  >
+                    Sign Up
+                  </button>
+                </div>
+              </div>
+
               <AnimatePresence mode="wait">
-                {view === 'signin' && (
+                {view === 'signin' ? (
                   <SlideView key="signin">
-                    <SignInForm
-                      onSwitchToSignUp={() => setView('signup-choice')}
-                      onClose={onClose}
-                    />
+                    <div className="px-8 pb-8">
+                      <SignInForm
+                        onSwitchToSignUp={() => setView('signup')}
+                        onClose={onClose}
+                        hideHeader
+                      />
+                    </div>
                   </SlideView>
-                )}
-                {view === 'signup-choice' && (
-                  <SlideView key="signup-choice">
-                    <SignUpChoice
-                      onSelect={(type) => setView(`signup-${type}`)}
-                      onSwitchToSignIn={() => setView('signin')}
-                    />
-                  </SlideView>
-                )}
-                {(view === 'signup-hire-workforce' || view === 'signup-find-job') && (
-                  <SlideView key={view}>
-                    <SignUpForm
-                      type={view === 'signup-hire-workforce' ? 'hire-workforce' : 'find-job'}
-                      onBack={() => setView('signup-choice')}
-                      onSwitchToSignIn={() => setView('signin')}
-                      onClose={onClose}
-                    />
+                ) : (
+                  <SlideView key="signup">
+                    <div className="px-8 pb-8">
+                      <SignUpForm
+                        type="hire-workforce"
+                        onBack={() => setView('signin')}
+                        onSwitchToSignIn={() => setView('signin')}
+                        onClose={onClose}
+                        hideHeader
+                      />
+                    </div>
                   </SlideView>
                 )}
               </AnimatePresence>

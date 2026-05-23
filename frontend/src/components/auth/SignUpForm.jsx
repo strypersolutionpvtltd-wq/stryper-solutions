@@ -20,7 +20,7 @@ const JOB_FIELDS = [
   { name: 'password',   label: 'Password', type: 'password', placeholder: '••••••••' },
 ];
 
-const SignUpForm = ({ type, onBack, onSwitchToSignIn, onClose }) => {
+const SignUpForm = ({ type, onBack, onSwitchToSignIn, onClose, hideHeader }) => {
   const isHire = type === 'hire-workforce';
   const fields = isHire ? HIRE_FIELDS : JOB_FIELDS;
   const [form, setForm] = useState({});
@@ -35,27 +35,29 @@ const SignUpForm = ({ type, onBack, onSwitchToSignIn, onClose }) => {
   };
 
   return (
-    <div className="p-8">
+    <div className={hideHeader ? '' : 'p-8'}>
       {/* Back + Header */}
-      <div className="flex items-center gap-3 mb-6">
-        <button
-          onClick={onBack}
-          className="w-8 h-8 rounded-full flex items-center justify-center text-neutral-400 hover:bg-neutral-100 hover:text-neutral-700 transition-colors"
-          aria-label="Go back"
-        >
-          <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
-            <path d="M10 3L5 8l5 5" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round"/>
-          </svg>
-        </button>
-        <div>
-          <h2 className="text-xl font-bold text-neutral-800">
-            {isHire ? 'Hire Workforce' : 'Find a Job'}
-          </h2>
-          <p className="text-neutral-500 text-xs mt-0.5">
-            {isHire ? 'Create your employer account' : 'Create your job seeker account'}
-          </p>
+      {!hideHeader && (
+        <div className="flex items-center gap-3 mb-6">
+          <button
+            onClick={onBack}
+            className="w-8 h-8 rounded-full flex items-center justify-center text-neutral-400 hover:bg-neutral-100 hover:text-neutral-700 transition-colors"
+            aria-label="Go back"
+          >
+            <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
+              <path d="M10 3L5 8l5 5" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round"/>
+            </svg>
+          </button>
+          <div>
+            <h2 className="text-xl font-bold text-neutral-800">
+              {isHire ? 'Hire Workforce' : 'Find a Job'}
+            </h2>
+            <p className="text-neutral-500 text-xs mt-0.5">
+              {isHire ? 'Create your employer account' : 'Create your job seeker account'}
+            </p>
+          </div>
         </div>
-      </div>
+      )}
 
       {/* Google Sign Up */}
       <motion.button

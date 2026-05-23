@@ -26,6 +26,7 @@ export const FOOTER_ROUTES = {
     { label: 'Our Team',    path: '/about#team'  },
     { label: 'Careers',     path: '/careers'     },
     { label: 'Contact',     path: '/contact'     },
+    { label: 'Admin Panel', path: '/admin/dashboard' },
   ],
   services: [
     { label: 'Permanent Staffing',  path: '/services#permanent'  },

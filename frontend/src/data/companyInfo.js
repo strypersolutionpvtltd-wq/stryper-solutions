@@ -6,7 +6,7 @@ export const COMPANY_INFO = {
   name: "Stryper Solution Pvt. Ltd.",
   shortName: "Stryper Solution",
   tagline: "Building Reliable teams for India’s Tech Future",
-  founded: 2014,
+  founded: 2021,
   email: "Strypersolutionpvtltd@gmail.com",
   phone: "+91 8448590303",
   address: {
@@ -27,7 +27,7 @@ export const COMPANY_INFO = {
 };
 
 export const STATS = [
-  { value: "500+", label: "Clients Served" },
+  { value: "15+", label: "Clients Served" },
   { value: "10K+", label: "Placements Made" },
   { value: "15+", label: "Industries Covered" },
   { value: "98%", label: "Client Satisfaction" },

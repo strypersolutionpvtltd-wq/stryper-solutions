@@ -87,8 +87,8 @@ function SupportIcon() {
 }
 
 const STATS = [
-  { value: "500+", label: "Workforce Deployed", icon: <PeopleIcon /> },
-  { value: "50+", label: "Clients Served", icon: <ClientIcon /> },
+  { value: "250+", label: "Workforce Deployed", icon: <PeopleIcon /> },
+  { value: "15+", label: "Clients Served", icon: <ClientIcon /> },
   { value: "10+", label: "Industries Covered", icon: <IndustryIcon /> },
   { value: "24/7", label: "Dedicated Support", icon: <SupportIcon /> },
 ];

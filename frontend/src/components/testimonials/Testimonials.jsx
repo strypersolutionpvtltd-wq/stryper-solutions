@@ -38,9 +38,9 @@ const TESTIMONIALS = [
 
 /* Aggregate stats shown above the cards */
 const TRUST_STATS = [
-  { value: '50+',  label: 'Enterprise Clients'  },
+  { value: '15+',  label: 'Enterprise Clients'  },
   { value: '98%',  label: 'Satisfaction Rate'   },
-  { value: '500+', label: 'Workers Deployed'    },
+  { value: '250+', label: 'Workers Deployed'    },
   { value: '10+',  label: 'Years of Excellence' },
 ];
 

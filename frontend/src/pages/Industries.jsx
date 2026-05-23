@@ -293,7 +293,7 @@ const IndustryBenefits = () => (
               <div className="relative z-10 p-6 flex flex-col gap-4 h-full">
                 <p className="text-white/50 text-[10px] uppercase tracking-widest font-medium">Industry Impact</p>
                 <div className="grid grid-cols-2 gap-3">
-                  {[{val:'6+',lbl:'Industries',c:'text-white'},{val:'500+',lbl:'Workers',c:'text-white'},{val:'50+',lbl:'Clients',c:'text-[#F5A623]'},{val:'98%',lbl:'Satisfaction',c:'text-emerald-300'}].map((s) => (
+                  {[{val:'6+',lbl:'Industries',c:'text-white'},{val:'250+',lbl:'Workers',c:'text-white'},{val:'15+',lbl:'Clients',c:'text-[#F5A623]'},{val:'98%',lbl:'Satisfaction',c:'text-emerald-300'}].map((s) => (
                     <div key={s.lbl} className="bg-white/10 rounded-2xl px-4 py-3.5 text-center border border-white/10">
                       <p className={`text-2xl font-bold font-display leading-none mb-1 ${s.c}`}>{s.val}</p>
                       <p className="text-white/50 text-[10px] font-medium">{s.lbl}</p>
@@ -323,7 +323,7 @@ const IndustryBenefits = () => (
                 </div>
                 <div>
                   <p className="text-xs font-bold text-neutral-900 leading-none">Trusted Partner</p>
-                  <p className="text-[10px] text-neutral-500 mt-0.5">Since 2014</p>
+                  <p className="text-[10px] text-neutral-500 mt-0.5">Since 2021</p>
                 </div>
               </div>
             </motion.div>

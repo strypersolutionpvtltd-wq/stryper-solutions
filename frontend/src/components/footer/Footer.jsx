@@ -2,7 +2,6 @@ import { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { motion } from 'framer-motion';
 
-import Logo from '@/components/shared/Logo';
 import { FOOTER_ROUTES, NAV_ROUTES } from '@/routes/routeConfig';
 import { COMPANY_INFO } from '@/data/companyInfo';
 import chairmanImg from '@/assets/image/chariman.jpg';
@@ -59,7 +58,6 @@ const Footer = () => {
 
           {/* Col 1 — Brand */}
           <div className="space-y-5">
-            <Logo variant="light" />
             <p className="text-sm leading-relaxed text-neutral-400">
               {COMPANY_INFO.tagline}
             </p>
@@ -190,7 +188,27 @@ const Footer = () => {
               </a>
             </div>
           </div>
+        </div>
 
+        {/* Strategic Partners Section */}
+        <div className="mt-16 pt-10 border-t border-neutral-800/60">
+          <div className="flex flex-col items-center">
+            <h3 className="text-xs font-semibold text-neutral-500 uppercase tracking-[0.2em] mb-8">Our Strategic Partners</h3>
+            <div className="flex flex-wrap justify-center gap-x-10 gap-y-6 opacity-60 grayscale hover:opacity-100 transition-opacity duration-500">
+              {[
+                "Haus Luxurient", "Fru Bon", "Yashoda Craft", 
+                "Chokhi Dhani Group", "Alisha Torent", 
+                "Industech RMC Pvt ltd", "Health Decode", "It Pay"
+              ].map((name) => (
+                <div key={name} className="flex items-center gap-2 group cursor-default">
+                  <div className="w-1.5 h-1.5 rounded-full bg-purple-500 group-hover:scale-125 transition-transform" />
+                  <span className="text-sm font-display font-bold tracking-tight text-neutral-400 group-hover:text-white transition-colors">
+                    {name}
+                  </span>
+                </div>
+              ))}
+            </div>
+          </div>
         </div>
       </div>
 

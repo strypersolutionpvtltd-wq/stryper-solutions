@@ -335,7 +335,7 @@ const WhyVisual = () => (
           aria-hidden="true"
         />
         <span className="text-[11px] font-semibold text-neutral-700">
-          Trusted Since 2014
+          Trusted Since 2021
         </span>
       </div>
     </motion.div>
