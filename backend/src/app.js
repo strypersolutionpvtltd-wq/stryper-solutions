@@ -20,6 +20,12 @@ app.get("/api/health", (req, res) => {
   res.status(200).json({ status: "ok", message: "Server is running" });
 });
 
+// Routes
+const authRoutes = require("./routes/auth.routes");
+app.use("/api/v1/auth", authRoutes);
+
+const companyProfileRoutes = require("./routes/companyProfile.routes");
+app.use("/api/v1/company", companyProfileRoutes);
 
 // 404 handler
 app.use((req, res) => {
