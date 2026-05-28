@@ -1,8 +1,10 @@
 import { NavLink, useNavigate } from 'react-router-dom';
-import { motion } from 'framer-motion';
+import { motion, AnimatePresence } from 'framer-motion';
+import { useState } from 'react';
 import { useAuth } from '@/context/AuthContext';
 import { HZ_NAV_ITEMS } from '@/hire-zone/utils/hireZoneRoutes';
 import Logo from '@/components/shared/Logo';
+import ConfirmModal from '@/components/shared/ConfirmModal';
 
 /* ── Inline SVG icon map ── */
 const Icon = ({ name, size = 18 }) => {
@@ -68,26 +70,70 @@ const Icon = ({ name, size = 18 }) => {
 const Sidebar = ({ onClose }) => {
   const { logout } = useAuth();
   const navigate = useNavigate();
+  const [showLogoutConfirm, setShowLogoutConfirm] = useState(false);
 
-  const handleLogout = () => {
+  const handleLogoutClick = () => {
+    setShowLogoutConfirm(true);
+  };
+
+  const confirmLogout = () => {
     logout();
     if (onClose) onClose();
     navigate('/', { replace: true });
   };
 
   return (
-    <aside className="flex flex-col h-full bg-white border-r border-neutral-100 shadow-sm">
-      {/* Logo — black bg to match brand */}
-      <div className="flex items-center h-16 px-5 border-b border-neutral-100 shrink-0 bg-black">
-        <Logo scrolled />
-      </div>
+    <>
+      <ConfirmModal 
+        isOpen={showLogoutConfirm}
+        onClose={() => setShowLogoutConfirm(false)}
+        onConfirm={confirmLogout}
+        title="Confirm Logout"
+        message="Are you sure you want to log out of the Hire Zone? Unsaved progress may be lost."
+        confirmText="Log Out"
+        isDanger={true}
+      />
+      <aside className="flex flex-col h-full bg-white border-r border-neutral-100 shadow-sm">
+        {/* Logo — black bg to match brand */}
+        <div className="flex items-center h-16 px-5 border-b border-neutral-100 shrink-0 bg-black">
+          <Logo scrolled />
+        </div>
 
-      {/* Nav items */}
-      <nav className="flex-1 overflow-y-auto px-3 py-4 space-y-0.5" aria-label="Hire Zone navigation">
-        {HZ_NAV_ITEMS.map(({ label, path, icon }) => (
+        {/* Nav items */}
+        <nav className="flex-1 overflow-y-auto px-3 py-4 space-y-0.5" aria-label="Hire Zone navigation">
+          {HZ_NAV_ITEMS.map(({ label, path, icon }) => (
+            <NavLink
+              key={path}
+              to={path}
+              onClick={onClose}
+              className={({ isActive }) =>
+                [
+                  'flex items-center gap-3 px-3 py-2.5 rounded-xl text-sm font-medium transition-all duration-200',
+                  isActive
+                    ? 'bg-purple-50 text-purple-700 font-semibold'
+                    : 'text-neutral-600 hover:bg-neutral-50 hover:text-neutral-900',
+                ].join(' ')
+              }
+            >
+              {({ isActive }) => (
+                <>
+                  <span className={isActive ? 'text-purple-600' : 'text-neutral-400'}>
+                    <Icon name={icon} />
+                  </span>
+                  <span>{label}</span>
+                  {isActive && (
+                    <span className="ml-auto w-1.5 h-1.5 rounded-full bg-purple-500" aria-hidden="true" />
+                  )}
+                </>
+              )}
+            </NavLink>
+          ))}
+        </nav>
+
+        {/* Company Profile link + Logout */}
+        <div className="px-3 py-4 border-t border-neutral-100 space-y-0.5 shrink-0">
           <NavLink
-            key={path}
-            to={path}
+            to="/hire-zone/company-profile"
             onClick={onClose}
             className={({ isActive }) =>
               [
@@ -98,54 +144,26 @@ const Sidebar = ({ onClose }) => {
               ].join(' ')
             }
           >
-            {({ isActive }) => (
-              <>
-                <span className={isActive ? 'text-purple-600' : 'text-neutral-400'}>
-                  <Icon name={icon} />
-                </span>
-                <span>{label}</span>
-                {isActive && (
-                  <span className="ml-auto w-1.5 h-1.5 rounded-full bg-purple-500" aria-hidden="true" />
-                )}
-              </>
-            )}
+            <span className="text-neutral-400">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">
+                <path d="M20 21v-2a4 4 0 00-4-4H8a4 4 0 00-4 4v2"/><circle cx="12" cy="7" r="4"/>
+              </svg>
+            </span>
+            <span>Company Profile</span>
           </NavLink>
-        ))}
-      </nav>
 
-      {/* Company Profile link + Logout */}
-      <div className="px-3 py-4 border-t border-neutral-100 space-y-0.5 shrink-0">
-        <NavLink
-          to="/hire-zone/company-profile"
-          onClick={onClose}
-          className={({ isActive }) =>
-            [
-              'flex items-center gap-3 px-3 py-2.5 rounded-xl text-sm font-medium transition-all duration-200',
-              isActive
-                ? 'bg-purple-50 text-purple-700 font-semibold'
-                : 'text-neutral-600 hover:bg-neutral-50 hover:text-neutral-900',
-            ].join(' ')
-          }
-        >
-          <span className="text-neutral-400">
-            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">
-              <path d="M20 21v-2a4 4 0 00-4-4H8a4 4 0 00-4 4v2"/><circle cx="12" cy="7" r="4"/>
-            </svg>
-          </span>
-          <span>Company Profile</span>
-        </NavLink>
-
-        <motion.button
-          whileHover={{ scale: 1.01 }}
-          whileTap={{ scale: 0.97 }}
-          onClick={handleLogout}
-          className="w-full flex items-center gap-3 px-3 py-2.5 rounded-xl text-sm font-medium text-red-500 hover:bg-red-50 transition-all duration-200"
-        >
-          <Icon name="logout" size={18} />
-          <span>Logout</span>
-        </motion.button>
-      </div>
-    </aside>
+          <motion.button
+            whileHover={{ scale: 1.01 }}
+            whileTap={{ scale: 0.97 }}
+            onClick={handleLogoutClick}
+            className="w-full flex items-center gap-3 px-3 py-2.5 rounded-xl text-sm font-medium text-red-500 hover:bg-red-50 transition-all duration-200"
+          >
+            <Icon name="logout" size={18} />
+            <span>Logout</span>
+          </motion.button>
+        </div>
+      </aside>
+    </>
   );
 };
 

@@ -39,13 +39,24 @@ import CompanyProfile   from '@/hire-zone/pages/CompanyProfile';
 // Admin layout + pages
 import AdminLayout    from '@/layouts/admin/AdminLayout';
 import AdminDashboard from '@/pages/admin/AdminDashboard';
+import AdminUsers     from '@/pages/admin/AdminUsers';
+import AdminCompanies from '@/pages/admin/AdminCompanies';
+import AdminJobs      from '@/pages/admin/AdminJobs';
+import AdminConsultants from '@/pages/admin/AdminConsultants';
+import AdminApplications from '@/pages/admin/AdminApplications';
+import AdminAnalytics from '@/pages/admin/AdminAnalytics';
+import AdminNotifications from '@/pages/admin/AdminNotifications';
+import AdminSettings from '@/pages/admin/AdminSettings';
+import RestrictedAccess from '@/pages/RestrictedAccess';
 
 /**
- * Guard for /admin/* — basic guard for demo.
+ * Guard for /admin/* — strict restriction.
+ * Redirects to /restricted-area if not authenticated as admin.
  */
 const AdminGuard = () => {
-  // In real app, check for admin role
-  return <AdminLayout />;
+  const { isLoggedIn, userRole } = useAuth();
+  if (isLoggedIn && userRole === 'admin') return <AdminLayout />;
+  return <Navigate to="/restricted-area" replace />;
 };
 
 /**
@@ -59,12 +70,13 @@ const HireZoneGuard = () => {
 };
 
 /**
- * Guard for public routes — redirects authenticated companies to dashboard.
+ * Guard for public routes — redirects authenticated companies/admins to their dashboards.
  * Renders MainLayout (which contains <Outlet />) for everyone else.
  */
 const PublicGuard = () => {
   const { isLoggedIn, userRole } = useAuth();
   if (isLoggedIn && userRole === 'company') return <Navigate to="/hire-zone/dashboard" replace />;
+  if (isLoggedIn && userRole === 'admin') return <Navigate to="/admin/dashboard" replace />;
   // Candidates stay on the main site — no redirect
   return <MainLayout />;
 };
@@ -73,7 +85,8 @@ function App() {
   const { pathname } = useLocation();
 
   useEffect(() => {
-    if (!pathname.startsWith('/hire-zone')) {
+    // Prevent smooth scroll jumps for admin and hire-zone dashboards
+    if (!pathname.startsWith('/hire-zone') && !pathname.startsWith('/admin')) {
       window.scrollTo({ top: 0, behavior: 'smooth' });
     }
   }, [pathname]);
@@ -121,10 +134,22 @@ function App() {
       {/* ── Admin routes ── */}
       <Route path="/admin" element={<AdminGuard />}>
         <Route index element={<Navigate to="/admin/dashboard" replace />} />
-        <Route path="dashboard" element={<AdminDashboard />} />
+        <Route path="dashboard"    element={<AdminDashboard />} />
+        <Route path="users"        element={<AdminUsers />} />
+        <Route path="companies"    element={<AdminCompanies />} />
+        <Route path="consultants"  element={<AdminConsultants />} />
+        <Route path="jobs"         element={<AdminJobs />} />
+        <Route path="applications" element={<AdminApplications />} />
+        <Route path="analytics"    element={<AdminAnalytics />} />
+        <Route path="notifications" element={<AdminNotifications />} />
+        <Route path="settings"     element={<AdminSettings />} />
+        
         {/* Placeholder routes for other admin pages */}
         <Route path="*" element={<div className="p-10 text-center text-neutral-500">Page under development</div>} />
       </Route>
+
+      {/* Restricted Access Page */}
+      <Route path="/restricted-area" element={<RestrictedAccess />} />
     </Routes>
   );
 }

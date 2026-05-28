@@ -1,6 +1,10 @@
 import { useState } from 'react';
 import { motion } from 'framer-motion';
+import { useNavigate } from 'react-router-dom';
+import ReCAPTCHA from "react-google-recaptcha";
 import GoogleIcon from './GoogleIcon';
+import { useAuth } from '@/context/AuthContext';
+import toast from 'react-hot-toast';
 
 const HIRE_FIELDS = [
   { name: 'companyName', label: 'Company Name', type: 'text', placeholder: 'Acme Pvt. Ltd.' },
@@ -25,13 +29,67 @@ const SignUpForm = ({ type, onBack, onSwitchToSignIn, onClose, hideHeader }) => 
   const fields = isHire ? HIRE_FIELDS : JOB_FIELDS;
   const [form, setForm] = useState({});
   const [showPass, setShowPass] = useState(false);
+  const [captchaVerified, setCaptchaVerified] = useState(false);
+  const { setIsLoggedIn, setUserRole, setUserData } = useAuth();
+  const navigate = useNavigate();
 
   const handleChange = (e) => setForm(p => ({ ...p, [e.target.name]: e.target.value }));
 
+  const onCaptchaChange = (value) => {
+    if (value) setCaptchaVerified(true);
+  };
+
+  const handleGoogleSignup = () => {
+    toast.promise(
+      new Promise((resolve) => setTimeout(resolve, 1500)),
+      {
+        loading: 'Connecting to Google Securely...',
+        success: 'Successfully registered with Google!',
+        error: 'Google Registration failed.',
+      }
+    ).then(() => {
+      const role = isHire ? 'company' : 'candidate';
+      setUserData({ 
+        fullName: 'Google User', 
+        email: 'user@gmail.com', 
+        title: role === 'company' ? 'Hiring Manager' : 'Job Seeker' 
+      });
+      setUserRole(role);
+      setIsLoggedIn(true);
+      if (onClose) onClose();
+      navigate(role === 'company' ? '/hire-zone/dashboard' : '/career-hub/profile', { replace: true });
+    });
+  };
+
   const handleSubmit = (e) => {
     e.preventDefault();
-    // TODO: connect to backend
-    console.log('SignUp submit:', type, form);
+    
+    if (!captchaVerified) {
+      alert("Security Check Required: Please verify that you are not a robot.");
+      return;
+    }
+
+    // Password strength/security check
+    if (form.password && form.password.length < 6) {
+      alert("Security Requirement: Password must be at least 6 characters long.");
+      return;
+    }
+
+    const role = isHire ? 'company' : 'candidate';
+    const email = form.email ? form.email.toLowerCase().trim() : '';
+    const name = form.fullName || (role === 'company' ? 'Company Manager' : 'Candidate User');
+
+    setUserData({ 
+      fullName: name, 
+      email: email, 
+      title: role === 'company' ? 'Hiring Manager' : 'Job Seeker' 
+    });
+    setUserRole(role);
+    setIsLoggedIn(true);
+    
+    toast.success('Registration successful!');
+    if (onClose) onClose();
+    navigate(role === 'company' ? '/hire-zone/dashboard' : '/career-hub/profile', { replace: true });
   };
 
   return (
@@ -61,6 +119,7 @@ const SignUpForm = ({ type, onBack, onSwitchToSignIn, onClose, hideHeader }) => 
 
       {/* Google Sign Up */}
       <motion.button
+        onClick={handleGoogleSignup}
         whileHover={{ scale: 1.01 }}
         whileTap={{ scale: 0.98 }}
         type="button"
@@ -115,6 +174,15 @@ const SignUpForm = ({ type, onBack, onSwitchToSignIn, onClose, hideHeader }) => 
             </div>
           </div>
         ))}
+
+        {/* Google ReCAPTCHA */}
+        <div className="flex justify-center py-2">
+          <ReCAPTCHA
+            sitekey="6LeIxAcTAAAAAJcZVRqyHh71UMIEGNQ_MXjiZKhI" // Test site key
+            onChange={onCaptchaChange}
+            theme="light"
+          />
+        </div>
 
         <motion.button
           whileHover={{ scale: 1.01 }}

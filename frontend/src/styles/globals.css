@@ -23,14 +23,18 @@
     scroll-behavior: smooth;
     -webkit-text-size-adjust: 100%;
     font-feature-settings: 'kern' 1, 'liga' 1, 'calt' 1;
+    overscroll-behavior: none;
+    background-color: #0a0a0a;
   }
 
   body {
-    @apply bg-white text-neutral-800 font-sans antialiased;
+    @apply text-neutral-800 font-sans antialiased;
+    background-color: #0a0a0a;
     font-size: 16px;
     line-height: 1.6;
     min-height: 100vh;
     overflow-x: hidden;
+    overscroll-behavior: none;
   }
 
   /* Headings */

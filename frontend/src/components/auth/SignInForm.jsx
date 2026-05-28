@@ -1,23 +1,88 @@
 import { useState } from 'react';
 import { motion } from 'framer-motion';
+import { useNavigate } from 'react-router-dom';
+import ReCAPTCHA from "react-google-recaptcha";
 import GoogleIcon from './GoogleIcon';
 import { useAuth } from '@/context/AuthContext';
 import logoImg from "@/assets/image/logo.jpeg";
+import toast from 'react-hot-toast';
 
 const SignInForm = ({ onSwitchToSignUp, onClose, hideHeader }) => {
   const [form, setForm] = useState({ email: '', password: '' });
   const [showPass, setShowPass] = useState(false);
-  const { setIsLoggedIn, setUserRole } = useAuth();
+  const [captchaVerified, setCaptchaVerified] = useState(false);
+  const { setIsLoggedIn, setUserRole, setUserData } = useAuth();
+  const navigate = useNavigate();
 
   const handleChange = (e) => setForm(p => ({ ...p, [e.target.name]: e.target.value }));
 
+  const onCaptchaChange = (value) => {
+    if (value) setCaptchaVerified(true);
+  };
+
+  const handleGoogleLogin = () => {
+    toast.promise(
+      new Promise((resolve) => setTimeout(resolve, 1500)),
+      {
+        loading: 'Connecting to Google Securely...',
+        success: 'Successfully authenticated with Google!',
+        error: 'Google Auth failed.',
+      }
+    ).then(() => {
+      setUserData({ fullName: 'Google User', email: 'user@gmail.com', title: 'Job Seeker' });
+      setUserRole('candidate');
+      setIsLoggedIn(true);
+      if (onClose) onClose();
+      navigate('/career-hub/profile', { replace: true });
+    });
+  };
+
   const handleSubmit = (e) => {
     e.preventDefault();
-    // Determine role from email for mock — in real app this comes from API
-    const role = form.email.toLowerCase().includes('company') ? 'company' : 'candidate';
-    setIsLoggedIn(true);
+
+    const email = form.email.toLowerCase().trim();
+    const password = form.password;
+
+    // 1. Admin Logic (Absolute Priority & Strict)
+    if (email === 'admin@stryper.com') {
+      if (password === 'stryperadmin123') {
+        setUserData({ fullName: 'Super Admin', email: 'admin@stryper.com', title: 'System Administrator' });
+        setUserRole('admin');
+        setIsLoggedIn(true);
+        if (onClose) onClose();
+        navigate('/admin/dashboard', { replace: true });
+      } else {
+        alert("Incorrect Admin Password!");
+      }
+      return;
+    }
+
+    // 2. Captcha Check for regular users
+    if (!captchaVerified) {
+      alert("Please verify that you are not a robot.");
+      return;
+    }
+
+    // 3. Regular Role Logic
+    let role = 'candidate';
+    let name = 'Candidate User';
+    
+    if (email.includes('company')) {
+      role = 'company';
+      name = 'Company Manager';
+    } else {
+      // For any other login, use a generic name instead of hardcoded Rahul
+      name = email.split('@')[0].charAt(0).toUpperCase() + email.split('@')[0].slice(1);
+    }
+
+    setUserData({ fullName: name, email: email, title: role === 'company' ? 'Hiring Manager' : 'Job Seeker' });
     setUserRole(role);
+    setIsLoggedIn(true);
     if (onClose) onClose();
+    
+    if (role === 'company') {
+      navigate('/hire-zone/dashboard', { replace: true });
+    }
   };
 
   return (
@@ -106,6 +171,15 @@ const SignInForm = ({ onSwitchToSignUp, onClose, hideHeader }) => {
               )}
             </button>
           </div>
+        </div>
+
+        {/* Google ReCAPTCHA */}
+        <div className="flex justify-center py-2">
+          <ReCAPTCHA
+            sitekey="6LeIxAcTAAAAAJcZVRqyHh71UMIEGNQ_MXjiZKhI" // Test site key
+            onChange={onCaptchaChange}
+            theme="light"
+          />
         </div>
 
         <motion.button

@@ -17,6 +17,14 @@ export const AuthProvider = ({ children }) => {
     catch { return null; }
   });
 
+  const [userData, setUserData] = useState(() => {
+    try { 
+      const saved = sessionStorage.getItem('hz_user_data');
+      return saved ? JSON.parse(saved) : null;
+    }
+    catch { return null; }
+  });
+
   // Persist to sessionStorage whenever auth state changes
   useEffect(() => {
     try {
@@ -24,8 +32,9 @@ export const AuthProvider = ({ children }) => {
         sessionStorage.setItem(SESSION_KEY_LOGGED, 'true');
       } else {
         sessionStorage.removeItem(SESSION_KEY_LOGGED);
+        sessionStorage.removeItem('hz_user_data');
       }
-    } catch { /* private browsing — silently ignore */ }
+    } catch { /* private browsing */ }
   }, [isLoggedIn]);
 
   useEffect(() => {
@@ -35,21 +44,26 @@ export const AuthProvider = ({ children }) => {
       } else {
         sessionStorage.removeItem(SESSION_KEY_ROLE);
       }
-    } catch { /* private browsing — silently ignore */ }
+    } catch { /* private browsing */ }
   }, [userRole]);
 
-  /** Clears all auth state and sessionStorage, redirecting handled by route guard */
+  useEffect(() => {
+    try {
+      if (userData) {
+        sessionStorage.setItem('hz_user_data', JSON.stringify(userData));
+      }
+    } catch { /* private browsing */ }
+  }, [userData]);
+
   const logout = () => {
     setIsLoggedIn(false);
     setUserRole(null);
-    try {
-      sessionStorage.removeItem(SESSION_KEY_LOGGED);
-      sessionStorage.removeItem(SESSION_KEY_ROLE);
-    } catch { /* ignore */ }
+    setUserData(null);
+    sessionStorage.clear();
   };
 
   return (
-    <AuthContext.Provider value={{ isLoggedIn, setIsLoggedIn, userRole, setUserRole, logout }}>
+    <AuthContext.Provider value={{ isLoggedIn, setIsLoggedIn, userRole, setUserRole, userData, setUserData, logout }}>
       {children}
     </AuthContext.Provider>
   );
